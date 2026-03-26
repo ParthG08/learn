@@ -1,0 +1,297 @@
+PHASE 0 — Java Fundamentals (NO Spring yet)
+
+Goal: Think in Java, not syntax.
+
+Projects (in order)
+
+1. Console Calculator
+
+2. Variables, loops, conditionals
+
+3. Student Management System (CLI)
+
+OOP, classes, constructors, collections
+
+4. Bank Account System
+
+5. Encapsulation, inheritance, polymorphism
+
+File-based To-Do App
+
+File I/O, exceptions
+
+Multi-threaded Downloader
+
+Threads, synchronization, Executors
+
+Must-know topics
+
+OOP (non-negotiable)
+
+Collections (List, Map, Set)
+
+Exceptions
+
+Generics
+
+Streams & Lambdas
+
+Basic multithreading
+
+Best sources (be honest, these work)
+
+Java Programming Masterclass – Tim Buchalka (Udemy)
+
+Core Java – Cay S. Horstmann (Book)
+
+Baeldung Java Basics (excellent explanations)
+
+👉 Don’t touch Spring until you’re comfortable here.
+
+PHASE 1 — Java + JDBC + Maven
+
+Goal: Understand what Spring is abstracting away.
+
+Projects
+
+CRUD App using JDBC
+
+MySQL/Postgres
+
+Connection Pool Demo
+
+HikariCP
+
+Maven Multi-Module Project
+
+Parent + child modules
+
+Learn
+
+SQL (joins, indexes)
+
+JDBC lifecycle
+
+Maven build system
+
+Sources
+
+Baeldung JDBC
+
+Java Brains (YouTube) – straight, no nonsense
+
+PHASE 2 — Spring Core (NO Spring Boot yet)
+
+Goal: Understand dependency injection properly.
+
+Projects
+
+Spring IoC Demo
+
+XML + Java Config
+
+DI-based Notification System
+
+Email/SMS/Push via interfaces
+
+Spring AOP Logging App
+
+Aspect-oriented programming
+
+Learn
+
+Bean lifecycle
+
+@Component, @Autowired
+
+ApplicationContext
+
+AOP (basics)
+
+Sources
+
+Spring Framework Guru
+
+Baeldung Spring Core
+
+PHASE 3 — Spring Boot Fundamentals
+
+Goal: Build real backend APIs.
+
+Projects (core)
+
+Hello World REST API
+
+CRUD REST API (User Service)
+
+Global Exception Handling
+
+Validation API
+
+Pagination & Sorting API
+
+Learn
+
+@RestController
+
+@RequestMapping
+
+@Service, @Repository
+
+Profiles (dev, prod)
+
+Actuator
+
+Sources
+
+Spring Boot in Action (Book)
+
+Spring Docs (boring but accurate)
+
+Amigoscode Spring Boot (YouTube)
+
+PHASE 4 — Spring Data JPA & Hibernate
+
+Goal: Real database-backed apps.
+
+Projects
+
+JPA CRUD App
+
+One-to-Many / Many-to-Many Demo
+
+Custom Queries Project
+
+Transaction Management Demo
+
+Learn
+
+Hibernate
+
+Lazy vs Eager loading
+
+N+1 problem
+
+Transactions
+
+Sources
+
+Vlad Mihalcea (Hibernate God)
+
+Baeldung JPA
+
+PHASE 5 — Security (Critical)
+
+Goal: This separates juniors from real backend devs.
+
+Projects
+
+JWT Authentication API
+
+Role-Based Access Control
+
+OAuth2 Login (Google/GitHub)
+
+Learn
+
+Spring Security filter chain
+
+JWT
+
+Password hashing
+
+CSRF
+
+Sources
+
+Amigoscode Spring Security
+
+Spring Security Docs
+
+PHASE 6 — Advanced Spring Boot (REAL WORLD)
+
+Goal: Production-level skills.
+
+Projects
+
+Microservices System
+
+User Service
+
+Order Service
+
+API Gateway
+
+Service Discovery
+
+Eureka / Consul
+
+Inter-service Communication
+
+Feign / RestTemplate
+
+Rate Limiter
+
+Caching with Redis
+
+Async Processing with Kafka/RabbitMQ
+
+PHASE 7 — DevOps + Deployment (Mandatory)
+
+Goal: Be job-ready, not tutorial-ready.
+
+Projects
+
+Dockerized Spring Boot App
+
+CI/CD Pipeline
+
+Cloud Deployment
+
+AWS / GCP / Azure
+
+Monitoring
+
+Prometheus + Grafana
+
+FINAL CAPSTONE (DO THIS)
+
+Enterprise-Grade Application
+
+Auth (JWT + OAuth)
+
+Microservices
+
+Docker
+
+Kafka
+
+Redis
+
+CI/CD
+
+Cloud deploy
+
+OpenAPI docs
+
+Tests (JUnit + Mockito)
+
+If you can explain and build this, you’re not replaceable easily.
+
+Brutally Honest Advice
+
+Skip toy projects after Phase 3
+
+Read Spring source code occasionally
+
+Avoid “Spring Boot crash course in 1 hour” nonsense
+
+Build → break → debug → repeat
+
+If you want, next I can:
+
+Turn this into a 6-month daily plan
+
+Rank which projects recruiters care about
+
+Map this to Java backend roles in India / Japan
