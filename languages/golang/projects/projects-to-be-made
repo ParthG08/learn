@@ -1,5 +1,6 @@
-1.Distributed Job Queue (Worker Pool System)
-2.High-performance API Gateway / Reverse Proxy
-3.Concurrent Web Crawler
-4.gRPC-based Microservice System
-5.Real-time Chat Server (WebSockets)
+Project	Study Milestone	Why?
+Concurrent Web Crawler	Mid-Golang study	
+Real-time Chat Server	End of Golang/Java	
+High-performance API Gateway	Mid-Networking/Go	
+gRPC Microservice System	Mid-System Design	
+Distributed Job Queue	End of Phase 4	
