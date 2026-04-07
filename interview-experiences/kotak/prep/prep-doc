@@ -1,0 +1,140 @@
+Here is a clean, no-BS list of ACTUAL questions asked in Kotak Mahindra Bank SDE Bar Raiser (Round 1) + exact distributed systems topics people reported.
+ 
+ 🔥 ✅ COMPLETE LIST — BAR RAISER ROUND QUESTIONS
+ 💻 DSA QUESTIONS (directly reported)
+ Arrays / Hashing
+ Two Sum (done)
+ Set Matrix Zeroes (done) 
+ Find K Closest Elements (done) --> sliding window / i did by sorting
+
+
+ Stars Between Bars
+ First Missing Positive (remember the solution)
+
+ Binary Search
+ Search in Rotated Sorted Array (need to revise the solution and the logic of this question)
+
+ Sliding Window / Strings
+ Longest Substring Without Repeating Characters 
+
+ Stack / Simulation
+ Valid Parentheses (make a map, stack --> insert or pop (according to the map))
+
+ Graph (VERY IMPORTANT)
+ Word Ladder (BFS) (Done remember)
+ Course Schedule (Topo sort / cycle detection) (done remember)
+
+ Dynamic Programming 
+ Coin Change (done)
+ Misc (sometimes asked)
+ 
+ Asteroid Collision (stack-based)
+ Minimum Swaps to group elements
+ 
+ 🧠 CS FUNDAMENTALS QUESTIONS (frequently asked)
+ 
+ Straight from bar raiser:
+ 
+ How does HashMap work internally?
+ Hash collisions & resolution techniques
+ Heap vs Stack memory
+ OS Scheduling basics
+ Recursion vs Iteration / DP
+ Binary Search explanation
+ Indexing in DB / arrays
+
+ 🏗️ LLD / DESIGN QUESTIONS (VERY COMMON in Round 1)
+ Design Parking Lot System
+ Design Inventory Management System
+ Design Ride Sharing (Uber-like backend)
+ Design E-commerce system
+ Design statement processing system (banking use case)
+
+ 🌐 ⚠️ DISTRIBUTED SYSTEM QUESTIONS (THIS IS WHAT YOU ASKED)
+ 
+ These are NOT deep system design, but conceptual + applied.
+ 
+ 🔴 Direct questions reported
+ How do you ensure consistency when nodes fail?
+ General distributed system concepts discussion
+ 
+ 🧠 EXACT DISTRIBUTED SYSTEM TOPICS TO STUDY (HIGH PROBABILITY)
+ 
+ These are inferred from multiple interview experiences:
+ 
+ 1. Consistency (VERY IMPORTANT)
+ Strong vs Eventual consistency
+ CAP theorem
+ 👉 Most asked concept in Kotak
+ 2. CAP Theorem (VERY HIGH CHANCE)
+ Consistency vs Availability vs Partition tolerance
+ Tradeoffs in real systems
+ 3. Fault Tolerance
+ What happens when nodes fail
+ Replication basics
+ Leader-follower idea
+ 4. Data Replication
+ Why replication
+ Sync vs Async replication
+ 5. Load Balancing (basic)
+ Why needed
+ Round robin idea
+ 6. Caching (basic)
+ Why caching
+ Cache invalidation problem
+ 7. Database Scaling
+ Vertical vs Horizontal scaling
+ Sharding basics
+ 8. High-Level Architecture Thinking
+ 
+ They may ask:
+ 
+ "How would you design a scalable system?"
+ "How to handle millions of users?"
+ ⚠️ IMPORTANT PATTERN (CRITICAL INSIGHT)
+ 
+ From multiple interviews:
+ 
+ 👉 Round 1 =
+ 1 DSA + 1 LLD + 1 conceptual (distributed/CS)
+ 
+ 👉 Or
+ 2 DSA + distributed discussion
+ 
+ 👉 Or
+ 1 DSA + 1 System Design + consistency question
+ 
+ 🚀 WHAT YOU SHOULD STUDY (FINAL FILTER)
+ 
+ If you only have limited time, focus on:
+ 
+ MUST DO
+ Two Sum
+ Rotated Array Search
+ Word Ladder / BFS
+ Valid Parentheses
+ Set Matrix Zeroes
+ MUST KNOW
+ HashMap internals
+ Time & space complexity
+ MUST PREP DESIGN
+ Parking Lot (very common)
+ MUST PREP DISTRIBUTED
+ CAP theorem
+ Consistency
+ Replication basics
+ 🎯 FINAL TRUTH (VERY IMPORTANT)
+ 
+ Kotak Bar Raiser is NOT about:
+ 
+ Hard DSA
+ 
+ It is about:
+ 
+ Clear thinking
+ Explaining approach
+ Basic system understanding
+ 
+ If you want, I can give you:
+ 👉 Top 5 questions to solve right now (with fastest revision strategy)
+ 👉 or 1-page cheat sheet for distributed systems
