@@ -118,7 +118,7 @@ bool will_add_overflow(int a, int b) {
 - Test with edge cases, including maximum and minimum values.
 - Use static analysis tools like Clang's undefined behavior sanitizer to detect overflows.
 - Prefer unsigned types for counters and sizes where wrap-around is acceptable.
-- When in doubt, use `long long` for integers in competitive coding.
+- When in doubt, use `long long` for integers in competitive coding.****
 
 ## Common Pitfalls
 
