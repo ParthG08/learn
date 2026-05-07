@@ -56,3 +56,10 @@ struct proc {
     // current interrupt
 };
 ```
+
+final state: for the process which are completed and which are in a state where they can be killed.
+This final state can be useful as it allows other processes examine the return code
+of the process and see if the just-finished process executed successfully.
+
+parent makes a wait() call to wait for the completion of child, this will able be used to indicate the OS
+to free any data structures that are relevant to the now extinct process.
