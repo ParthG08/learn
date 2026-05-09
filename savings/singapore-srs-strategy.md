@@ -1,5 +1,17 @@
 # Strategy: The "Strong Currency Vault" & Early Retirement Loophole
 
+## Feasibilty
+
+1. This is a quite feasible plan to use this scheme as singapore in general is a country in which i would like to live.
+2. Good healthcare, quality of life, indianness and connectivity to india.
+3. Has a fair share of japanese companies, and FAANG companies i could target.
+4. Proximity to malaysia which has territorial taxation. (Relatively easy escape)
+5. You could return to india for about 2-3 years on a RNOR when your earning stint is over.
+
+Gameplan would be:- 
+
+Japan -> singapore -> India (RNOR) -> Malaysia (retire).
+
 This document outlines a financial engineering strategy for high-earning individuals to minimize tax liabilities during the accumulation phase and achieve a tax-efficient "exit" to a low-cost-of-living (LCOL) country by age 40-45.
 
 ## 1. The Accumulation Phase: The Singapore SRS "Vault"
