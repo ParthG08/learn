@@ -1,10 +1,10 @@
 # Understanding JPA Entities, POJOs, and DTOs
 ## 1. Core Differences & Use Cases
-| Concept | Definition | Primary Use Case | Key Characteristics |
-|---|---|---|---|
-| **JPA Entity** | A class mapped directly to a database table via ORM annotations. | Database persistence and data access layer. | Bound to persistence context; contains ORM annotations; matches schema structure. |
-| **POJO** *(Plain Old Java Object)* | A simple Java object without framework restrictions. | Business logic, domain modeling, state management. | High flexibility; no framework dependencies; encapsulates behaviors. |
-| **DTO** *(Data Transfer Object)* | An object optimized strictly to carry structured data between application layers or APIs. | API requests/responses; UI presentation. | Flat; immutable (often using Java records); zero business logic; optimized for serialization. |
+| Concept                            | Definition                                                                                | Primary Use Case                                   | Key Characteristics                                                                           |
+| ---------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **JPA Entity**                     | A class mapped directly to a database table via ORM annotations.                          | Database persistence and data access layer.        | Bound to persistence context; contains ORM annotations; matches schema structure.             |
+| **POJO** *(Plain Old Java Object)* | A simple Java object without framework restrictions.                                      | Business logic, domain modeling, state management. | High flexibility; no framework dependencies; encapsulates behaviors.                          |
+| **DTO** *(Data Transfer Object)*   | An object optimized strictly to carry structured data between application layers or APIs. | API requests/responses; UI presentation.           | Flat; immutable (often using Java records); zero business logic; optimized for serialization. |
 ## 2. Architectural Flow
 To avoid leaking database schemas to the client and prevent errors like LazyInitializationException, map entities to domain POJOs or DTOs before transferring them:
 ```
