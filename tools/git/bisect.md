@@ -11,7 +11,7 @@ You tell Git two things:
 
 Git then checks out the midpoint between those two commits and asks you: is this good or bad? Based on your answer, it eliminates half the remaining range and picks the next midpoint. Repeat until it pins down the exact offending commit.
 
-	## Basic Workflow
+		## Basic Workflow
 
 ```bash
 git bisect start
