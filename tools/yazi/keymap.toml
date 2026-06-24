@@ -1,0 +1,22 @@
+[[manager.prepend_keymap]]
+on   = [ "<C-f>" ]  # This binds it to Ctrl + f
+run  = """
+    shell '
+        file=$(fzf --preview "bat --style=numbers --color=always --line-range :50 {}")
+        if [ -n "$file" ]; then
+            ya emit reveal "$file"
+        fi
+    ' --block
+"""
+desc = "Fuzzy find files with fzf preview"
+
+
+[[manager.prepend_keymap]]
+on   = [ "!" ]
+run  = 'shell "$SHELL" --block'
+desc = "Open shell in current directory"
+
+[[manager.prepend_keymap]]
+on   = [ ";" ]
+run  = "shell --interactive"
+desc = "Run shell command"
