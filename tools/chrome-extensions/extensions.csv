@@ -1,0 +1,10 @@
+ File: chrome_extensions.csv
+─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ name,version,id,webstore_url
+   2 │ __MSG_extName__,1.107.1,ghbmnnjooekpmoecnnnilnnbdlolhkhi,https://chromewebstore.google.com/detail/ghbmnnjooekpmoecnnnilnnbdlolhkhi
+   3 │ __MSG_extensionName__,3.10,lmjegmlicamnimmfhcmpkclmigmmcbeh,https://chromewebstore.google.com/detail/lmjegmlicamnimmfhcmpkclmigmmcbeh
+   4 │ OneLogin for Google Chrome,4.1.4,ioalpmibngobedobkmbhgmadaphocjdn,https://chromewebstore.google.com/detail/ioalpmibngobedobkmbhgmadaphocjdn
+   5 │ Tab Renamer,1.1.5,mncaahedchkhclokjmfjbennhbeceecl,https://chromewebstore.google.com/detail/mncaahedchkhclokjmfjbennhbeceecl
+   6 │ __MSG_APP_NAME__,1.0.0.6,nmmhkkegccagdldgiimedpiccmgmieda,https://chromewebstore.google.com/detail/nmmhkkegccagdldgiimedpiccmgmieda
+   7 │ Previous Tab,1.2.0,bjaniflnlhhofabpoamhnobeonjcjjpl,https://chromewebstore.google.com/detail/bjaniflnlhhofabpoamhnobeonjcjjpl
+   8 │ SentinelOne,0.2.0,iekfdmgbpmcklocjhlabimljddkeflgl,https://chromewebstore.google.com/detail/iekfdmgbpmcklocjhlabimljddkeflgl
