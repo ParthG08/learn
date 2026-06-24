@@ -4,9 +4,9 @@
 
 So i have changed these ones.
 
-Maximize / Restore the active view or editor. -> Command + B
-Toggle Results Panel -> Control + backtick.
-Toggle Results Panels -> Command + L 
+1. Maximize / Restore the active view or editor. -> Command + B
+2. Toggle Results Panel -> Control + backtick.
+3. Toggle Results Panels -> Command + L 
 
 
 These shortcuts give Dbeaver more like a VSCode like feel which is great.
