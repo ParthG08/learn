@@ -6,7 +6,11 @@ So i have changed these ones.
 
 1. Maximize / Restore the active view or editor. -> Command + B
 2. Toggle Results Panel -> Control + backtick.
-3. Toggle Results Panels -> Command + L 
+3. Toggle Results Panels -> Command + L
+4. DBeaver's Quick Access -> Command + K (By Default Mapped with Command + 3)
+
+So the idea for the quick access is similiar to searching how it happends in bruno as well.  
+(Command + K, Commadn + P should be the default shortcuts for finding things).
 
 
 These shortcuts give Dbeaver more like a VSCode like feel which is great.
