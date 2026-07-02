@@ -9,15 +9,15 @@ So i have changed these ones.
 3. Toggle Results Panels -> Command + L
 4. DBeaver's Quick Access -> Command + K (By Default Mapped with Command + 3)
    -> These are the things that you can search inside of the Dbeavers Quick Access.
-      SQL script names
-      Open editor tabs
-      DBeaver commands (e.g., "Invalidate/Reconnect", "Commit", "Rollback")
-      Preferences pages
-      Views (Database Navigator, Project Explorer, Query Manager, etc.)
-      Connection names
-      Projects
-      Bookmarks (if configured)
-      Some UI actions and menu items 
+      1. SQL script names
+      2. Open editor tabs
+      3. DBeaver commands (e.g., "Invalidate/Reconnect", "Commit", "Rollback")
+      4. Preferences pages
+      5. Views (Database Navigator, Project Explorer, Query Manager, etc.)
+      6. Connection names
+      7. Projects
+      8. Bookmarks (if configured)
+      9. Some UI actions and menu items 
 
 So the idea for the quick access is similiar to searching how it happends in bruno as well.  
 (Command + K, Commadn + P should be the default shortcuts for finding things).
