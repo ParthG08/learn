@@ -1,28 +1,74 @@
 # Shortcuts Binding in Dbeaver.
 
-## You can change the shortcuts in the Windows -> Preferences -> User Interface -> Keys 
+# DBeaver Shortcut Configurations
 
-So i have changed these ones.
+To update these keyboard shortcuts, navigate to:  
+`Windows` → `Preferences` → `User Interface` → `Keys`
 
-1. Maximize / Restore the active view or editor. -> Command + B
-2. Toggle Results Panel -> Control + backtick.
-3. Toggle Results Panels -> Command + L
-4. DBeaver's Quick Access -> Command + K (By Default Mapped with Command + 3)
-   -> These are the things that you can search inside of the Dbeavers Quick Access.
-      1. SQL script names (will mainly be used for this only, just like the command + shoft + A shortcut in chrome to find open tabs.)
-      2. Open editor tabs
-      3. DBeaver commands (e.g., "Invalidate/Reconnect", "Commit", "Rollback")
-      4. Preferences pages
-      5. Views (Database Navigator, Project Explorer, Query Manager, etc.)
-         1. This query manager will help you to see the history of all the queries run on the Dbeaver.    
-      7. Connection names
-      8. Projects
-      9. Bookmarks (if configured)
-      10. Some UI actions and menu items 
+---
 
-So the idea for the quick access is similiar to searching how it happends in bruno as well.  
-(Command + K, Commadn + P should be the default shortcuts for finding things).
+| Action | Shortcut | Purpose / Notes |
+| :--- | :--- | :--- |
+| **Maximize / Restore Active View** | `Cmd + B` | Quickly toggles the active editor or view to full screen. |
+| **Toggle Results Panel** | `Ctrl + \`` | Shows/hides the bottom results pane. |
+| **Toggle Results Panels** | `Cmd + L` | Alternative toggle mapping for results visualization. |
+| **DBeaver Quick Access** | `Cmd + K` | Overrides the default layout. Global fuzzy finder for commands, views, and settings. |
+| **Open Resource** | `Cmd + P` | Remapped to match standard editor workflows. Used for finding files and scripts. |
 
+---
+
+## DBeaver Quick Access (`Cmd + K`)
+
+The philosophy behind using `Cmd + K` matches the search pattern found in tools like **Bruno** (`Cmd + K` / `Cmd + P`). It acts as a global fuzzy finder for your entire IDE workspace.
+
+### Key Use Cases & Searchable Items
+
+* **SQL Script Names:** This is the primary use case. It behaves exactly like `Cmd + Shift + A` in Google Chrome (used to find open tabs), allowing you to search through and jump straight to your saved script files.
+* **Open Editor Tabs:** Quickly swap between your currently active database tabs.
+* **DBeaver Core Commands:** Execute commands directly without touching the mouse:
+  * *Invalidate/Reconnect*
+  * *Commit*
+  * *Rollback*
+* **Views & Panels:** Jump directly to specific UI windows:
+  * *Database Navigator*
+  * *Project Explorer*
+  * **Query Manager:** Incredibly useful for reviewing the history and logs of every single query run across your sessions.
+* **Connection Names:** Quickly switch context between different database environments.
+* **Preferences & UI Actions:** Instantly access deeper settings pages, projects, or bookmarks.
+
+## Open everything using the Quick Menu.
+
+Can open:
+- Views (e.g., Database Navigator, Project Explorer)
+- Commands
+- Preferences
+- Recently opened editors
+
+## Open Database Navigator
+```text
+⌘3 (or ⌘K) → Database Navigator
+```
+
+## View Saved SQL Scripts
+```text
+⌘3 (or ⌘K) → Project Explorer
+```
+
+Navigate to:
+
+```text
+General
+└── Scripts
+```
+
+## Search for a Script by Filename
+```text
+⌘⇧R → Open Resource
+```
+
+Type the script name to open it.
+
+> **Note:** `⌘K` (Quick Access) does **not** search all SQL script files by name. Use `⌘R` (**Open Resource**) instead.
 
 These shortcuts give Dbeaver more like a VSCode like feel which is great.
 
