@@ -9,7 +9,7 @@ So i have changed these ones.
 3. Toggle Results Panels -> Command + L
 4. DBeaver's Quick Access -> Command + K (By Default Mapped with Command + 3)
    -> These are the things that you can search inside of the Dbeavers Quick Access.
-      1. SQL script names
+      1. SQL script names (will mainly be used for this only, just like the command + shoft + A shortcut in chrome to find open tabs.)
       2. Open editor tabs
       3. DBeaver commands (e.g., "Invalidate/Reconnect", "Commit", "Rollback")
       4. Preferences pages
