@@ -14,10 +14,11 @@ So i have changed these ones.
       3. DBeaver commands (e.g., "Invalidate/Reconnect", "Commit", "Rollback")
       4. Preferences pages
       5. Views (Database Navigator, Project Explorer, Query Manager, etc.)
-      6. Connection names
-      7. Projects
-      8. Bookmarks (if configured)
-      9. Some UI actions and menu items 
+         1. This query manager will help you to see the history of all the queries run on the Dbeaver.    
+      7. Connection names
+      8. Projects
+      9. Bookmarks (if configured)
+      10. Some UI actions and menu items 
 
 So the idea for the quick access is similiar to searching how it happends in bruno as well.  
 (Command + K, Commadn + P should be the default shortcuts for finding things).
