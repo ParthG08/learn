@@ -64,7 +64,9 @@ When I ask "what should I study today?" (or similar):
   - `data-engineering/` → Phase 6A (Data Engineering)
   - `ai-integration/` → Phase 6D (AI/LLM Integration)
   - `integration/` → Phase 6C (Enterprise Integration)
-  - `japanese/` → Japanese language study (not in LEARNING_PATH.md but critical for Japan FDE)
+  - `personal-growth/japanese/` → Japanese language study (not in LEARNING_PATH.md but critical for Japan FDE)
+  - `personal-growth/escape/` → Extra-curriculars & life outside work
+  - `personal-growth/savings/` → Personal finance & tax strategy
 
 ---
 
@@ -78,6 +80,6 @@ When starting new topics, create these directories if they don't exist:
 - `messaging/`
 - `infrastructure/multi-cloud/`
 - `system-design/distributed-systems/`
-- `japanese/`
+- `personal-growth/japanese/`
 - `languages/python/`
 - `languages/typescript/`
