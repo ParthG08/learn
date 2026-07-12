@@ -18,6 +18,7 @@
 | 8–10 | Phase 4 — Architecture & Distributed Systems + Phase 6C–D (Enterprise Integration, AI/LLM) |
 | 11–12 | Phase 5 — Foundations + Interview Sprint + Phase 6E–G (Security, Prototyping, Client Skills) |
 | Ongoing | DSA, 3-4 problems/week from Month 1 |
+| Ongoing | Japanese — daily study (vocab, kanji, grammar, listening) from Day 1; N5 → N4 → N3 → N2 over 2–3 years |
 
 > Note: adding the full FDE track (Phase 6) is genuinely more than 12 months of net-new material on top of Phases 1–5. If you're optimizing for an actual FDE role rather than general SDE breadth, consider lightening Phase 4 (Distributed Systems theory and deep Performance Engineering are lower-frequency for FDE work) to make room.
 
@@ -26,21 +27,21 @@
 ## Phase 1: Daily Engineering Spine
 
 ### 1. Git — `tools/git/` (P0)
-- [ ] Daily flow: clone, branch, commit, push/pull/fetch, merge vs. rebase
-- [ ] **Interactive rebase** (squash, reorder, fixup) — used constantly for clean PR history
-- [ ] Conflict resolution (real conflicts, not toy ones)
-- [ ] Stash, cherry-pick
-- [ ] `git bisect` for regression hunting
-- [ ] Reflog (recovering "lost" commits)
+- [x] Daily flow: clone, branch, commit, push/pull/fetch, merge vs. rebase — `branching-merging.md`, `commits.md`, `remote-workflows.md`, `three-trees.md`
+- [x] **Interactive rebase** (squash, reorder, fixup) — `interactive-rebase.md`, `rewriting-history.md`
+- [x] Conflict resolution (real conflicts, not toy ones) — `conflict.md`
+- [x] Stash, cherry-pick — `patch.md`
+- [x] `git bisect` for regression hunting — `bisect.md`
+- [x] Reflog (recovering "lost" commits) — `recovery.md`
 - [ ] `git blame`, `log -p`, `log --follow` for code archaeology
 - [ ] `.gitignore`, pre-commit hooks
 - [ ] P2: submodules, worktrees
 - **Resources:** *Pro Git* (free, git-scm.com/book), Learn Git Branching (interactive, learngitbranching.js.org)
 
-### 2. Linux & Shell — `tools/bash/` (P0)
+### 2. Linux & Shell — `tools/cli-tools/bash/` (P0)
 - [ ] Filesystem navigation, permissions (`chmod`/`chown`), process management (`ps`, `top`, `kill`, `systemctl`)
 - [ ] `grep`/`sed`/`awk` for log parsing — single biggest time-saver when debugging prod
-- [ ] Piping, redirection, `find` + `xargs`
+- [x] Piping, redirection, `find` + `xargs` — `find/find-exec.md`
 - [ ] Bash scripting: variables, loops, conditionals, functions
 - [ ] `tail -f`, `journalctl` for live log reading
 - [ ] `ssh`, `scp`, `tmux`/`screen`
@@ -54,7 +55,7 @@ This deserves far more weight than the original generic "DBMS" entry — it's us
 
 - [ ] **SQL Mastery** — joins, subqueries, window functions, CTEs, aggregates (P0, daily)
 - [ ] **Indexes** — B-tree basics, composite indexes, covering indexes, when an index silently isn't used (P0)
-- [ ] **Query Optimization** — reading `EXPLAIN ANALYZE`, query plans, solving N+1 (P0)
+- [x] **Query Optimization** — reading `EXPLAIN ANALYZE`, query plans, solving N+1 (P0) — `query-optimization/comparison/warm-cache-compare.md`
 - [ ] **Transactions & Isolation Levels** — Read Committed, Repeatable Read, Serializable; dirty/phantom reads (P1)
 - [ ] **Locks & Deadlocks** — row vs. table locks, detecting and resolving deadlocks (P1)
 - [ ] **Redis** — strings/hashes/sets/sorted sets/lists; caching, rate limiting, leaderboards, pub/sub; eviction policies; RDB vs AOF persistence; Redis Cluster basics (P0)
@@ -62,7 +63,7 @@ This deserves far more weight than the original generic "DBMS" entry — it's us
 - [ ] **PostgreSQL Internals** — MVCC, WAL, vacuum, table bloat (P2, but a strong senior-engineer signal)
 - **Resources:** *Use The Index, Luke!* (free, use-the-index-luke.com), *SQL Performance Explained* (Markus Winand), Redis University (free, redis.com/university), PostgreSQL official docs
 
-### 5. Docker — `tools/docker/` (P0)
+### 5. Docker — `tools/cli-tools/docker/` (P0)
 - [ ] Images vs. containers; Dockerfile best practices (multi-stage builds, layer caching)
 - [ ] `docker-compose` for local dev environments
 - [ ] Volumes & basic networking
@@ -170,7 +171,7 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 ## Phase 4: Architecture & Design
 
 ### 1. Low-Level Design — `system-design/lld/` (P1)
-- [ ] SOLID principles, applied practically rather than academically
+- [x] SOLID principles, applied practically rather than academically — `best-practices/solid-principles.md`, `lld/all-things.md`
 - [ ] Patterns actually seen at work: Factory, Strategy, Observer, Decorator, Builder, Singleton (and its pitfalls)
 - [ ] Practice problems: parking lot, rate limiter, elevator system
 - **Resources:** refactoring.guru, *Head First Design Patterns*
@@ -203,19 +204,20 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 
 ### 1. DSA — `dsa/` (interview-critical; run in parallel from Month 1, see pacing note above)
 - [ ] Patterns over memorization: two pointers, sliding window, BFS/DFS, DP basics, heaps, intervals
-- [ ] Integer overflow & edge-case handling discipline
+- [x] Integer overflow & edge-case handling discipline — `best-practices/integer-overflow/integer-overflow.md`
 - **Resources:** NeetCode 150 (free, neetcode.io), *Elements of Programming Interviews* (language-specific edition)
 
 ### 2. Operating Systems — `cs-fundamentals/os/`
-- [ ] Processes & threads, scheduling
-- [ ] Memory management (paging, virtual memory)
-- [ ] Concurrency primitives (mutex, semaphore, deadlock conditions)
+- [x] Processes & threads, scheduling — `intro/virtualization-of-the-cpu.md`, `virtualization/intro/` (process abstraction, creation, data structures), `virtualization/process-api/` (fork, exec, wait, pipe)
+- [x] Memory management (paging, virtual memory) — `intro/virtualizing-memory.md`, `virtualization/intro-stack-head.md`
+- [x] Concurrency primitives (mutex, semaphore, deadlock conditions) — `intro/concurrency.md`
 - **Resources:** *OSTEP — Operating Systems: Three Easy Pieces* (free, ostep.org)
 
 ### 3. Computer Networks — `cs-fundamentals/cn/`
 - [ ] TCP/IP, the TCP handshake, TCP vs. UDP
 - [ ] HTTP/HTTPS, HTTP/2, TLS handshake basics
 - [ ] DNS resolution flow
+> Only README.md exists in `cs-fundamentals/cn/` — no substantive notes yet
 - **Resources:** *High Performance Browser Networking* (free, hpbn.co, Ilya Grigorik) — more practically useful than a textbook for working engineers
 
 ### 4. DB Internals — deep dive beyond Phase 1 SQL mastery
@@ -276,6 +278,15 @@ This is what's *not* in a normal backend/cloud SDE plan but is core to FDE work.
 - [ ] Notebook-driven development — Jupyter, for live data exploration with a client in the room
 - [ ] CLI tool design — `argparse`/`click`/`cobra` — you'll constantly be building one-off tools for client teams
 
+### H. Japan-Specific FDE Skills — `japanese/business-culture/` (P0 for Japan FDE)
+> See separate Japanese Language Track below for full language progression. This section covers Japan-specific engineering context.
+
+- [ ] **Japanese Business Culture** — keigo (敬語) levels, email/messaging etiquette, meeting protocol, nemawashi (根回し / consensus-building), honne (本音) vs. tatemae (建前)
+- [ ] **Japanese Enterprise Tech Landscape** — domestic cloud providers (Sakura Cloud, IDCF Cloud), common enterprise stacks (Fujitsu, NEC, Hitachi), legacy system patterns in Japanese corporations
+- [ ] **Japan-Specific Compliance** — Act on Protection of Personal Information (個人情報保護法 — Japan's GDPR equivalent), My Number (個人番号) system handling, FISC (financial industry security guidelines)
+- [ ] **Japanese National IT Qualifications** — 基本情報技術者 (Fundamental IT Engineer), 応用情報技術者 (Applied IT Engineer) — resume differentiators for Japanese companies
+- **Resources:** IPA official exam guides (jitec.ipa.go.jp), Japanese government IT standards docs, Okta Japan / Auth0 Japan enterprise case studies
+
 ### G. The Skill That Actually Defines the Role (not on any resource list)
 - [ ] Requirements-to-prototype translation — turning a vague client conversation into a working demo within days
 - [ ] Writing technical docs/design docs a non-technical stakeholder can actually follow
@@ -284,9 +295,93 @@ This is what's *not* in a normal backend/cloud SDE plan but is core to FDE work.
 
 ---
 
+## Japanese Language Track — `japanese/` (P0 for Japan FDE — ongoing from Day 1)
+
+> This is the single biggest career moat for an FDE in Japan. Business-grade Japanese (N2+) combined with strong engineering skills eliminates 95% of global competition. Target: N5 → N4 → N3 → N2 over 2–3 years. Study daily in parallel with everything else.
+
+### JLPT Progression (2–3 year timeline)
+
+#### N5 (~4 months) — `japanese/n5/`
+Foundational. Basic conversations, hiragana/katakana, ~100 kanji, ~800 vocab.
+- [ ] Hiragana & Katakana mastered (read and write fluently)
+- [ ] Basic sentence structure (Subject-Object-Verb, particles: は、が、を、に、で)
+- [ ] Basic verb conjugations (present/past, affirmative/negative, て-form)
+- [ ] Basic adjectives (い-adj vs. な-adj) and conjugation
+- [ ] Numbers, counters, dates, time expressions
+- [ ] Self-introduction, basic conversation patterns
+- **Goal:** Pass JLPT N5 practice test
+
+#### N4 (~6 months) — `japanese/n4/`
+Everyday Japanese. ~300 kanji, ~1,500 vocab. Can handle daily situations.
+- [ ] All verb conjugation forms (potential, volitional, conditional, passive, causative)
+- [ ] Compound sentences (から、ので、けど、たら、ば)
+- [ ] Giving/receiving expressions (あげる、くれる、もらう) — critical for business contexts
+- [ ] Honorific basics (respectful 尊敬語 and humble 謙譲語 introduction)
+- [ ] Reading simple news, short passages
+- [ ] Listening: NHK Easy News, basic podcasts
+- **Goal:** Pass JLPT N4
+
+#### N3 (~8 months) — `japanese/n3/`
+Intermediate. ~650 kanji, ~3,750 vocab. Can understand business conversations.
+- [ ] Complex sentence patterns (~200 grammar points)
+- [ ] Intermediate keigo (敬語) — proper respectful and humble forms
+- [ ] Reading business emails and basic technical documentation in Japanese
+- [ ] Listening: Native-speed Japanese, news, technical presentations
+- [ ] Speaking: Express opinions, participate in meetings at basic level
+- **Goal:** Pass JLPT N3 — this is the minimum to function in a Japanese workplace
+
+#### N2 (~8 months) — `japanese/n2/`
+Business-proficient. ~1,000 kanji, ~6,000 vocab. This is the career-moat level.
+- [ ] Advanced grammar — formal written patterns, academic/business register
+- [ ] Fluent keigo across all contexts (client meetings, emails, presentations)
+- [ ] Reading technical specifications, architecture docs, legal/compliance docs in Japanese
+- [ ] Listening: Meeting discussions, technical talks, client calls at native speed
+- [ ] Speaking: Lead technical discussions, present architecture, negotiate scope in Japanese
+- **Goal:** Pass JLPT N2 — this, plus engineering skills, is the career differentiator
+
+### Supporting Study Areas (run in parallel with JLPT levels)
+
+#### Kanji — `japanese/kanji/`
+- [ ] RTK (Remembering the Kanji) or Wanikani for systematic kanji acquisition
+- [ ] Stroke order, radicals, on'yomi vs. kun'yomi readings
+- **Resources:** Wanikani (paid, highly effective), Anki kanji decks, Kanji Study app
+
+#### Grammar — `japanese/grammar/`
+- [ ] JLPT grammar points per level (N5–N2)
+- [ ] Reading comprehension strategies
+- **Resources:** Bunpro (SRS-based grammar), Tae Kim's Guide to Japanese, 日本語の森 (YouTube)
+
+#### Vocabulary — `japanese/vocabulary/`
+- [ ] Core vocabulary decks per JLPT level
+- [ ] Spaced repetition (Anki) daily
+- **Resources:** Anki Core 2k/6k decks, iKnow.jp
+
+#### Listening — `japanese/listening/`
+- [ ] Daily listening practice (podcasts, news, anime with JP subtitles)
+- [ ] Shadowing exercises for pronunciation
+- **Resources:** NHK Easy News, Nihongo con Teppei (podcast), Japanese with Shun (YouTube), Netflix with Japanese subtitles
+
+#### Technical Japanese — `japanese/technical/`
+Learn CS/IT terminology in Japanese — critical for FDE work in Japanese enterprise environments.
+- [ ] Programming/CS terminology in Japanese (API, database, deployment, cloud = データベース, 展開, クラウド, etc.)
+- [ ] Reading technical blogs/documentation in Japanese (Qiita, Zenn, 日本語 AWS docs)
+- [ ] Writing technical design docs in Japanese
+- [ ] JP technical Slack/Discord communities for immersion
+- **Resources:** Qiita (qiita.com — Japanese dev blog platform), Zenn (zenn.dev), AWS 日本語ドキュメント, Microsoft Azure 日本語ドキュメント
+
+#### Business Culture — `japanese/business-culture/`
+- [ ] Keigo master class — full respectful, humble, and polite forms for business settings
+- [ ] Japanese corporate hierarchy and senpai-kohai dynamics
+- [ ] Email/chat etiquette in Japanese business context
+- [ ] Meeting protocols (opening/closing scripts, agenda handling, nemawashi)
+- [ ] How Japanese enterprises evaluate and adopt technology (decision-making flow is different from Western companies)
+- [ ] Client presentation and consulting skills in Japanese context
+
+---
+
 ### Java/Spring — `languages/java/`
-- [ ] **Spring Ecosystem** — DI/IoC, Boot autoconfiguration, bean lifecycle, AOP (P0)
-- [ ] **Data Persistence** — Hibernate/JPA lifecycle, dirty checking, `@Transactional` propagation, solving N+1 (P0)
+- [x] **Spring Ecosystem** — DI/IoC, Boot autoconfiguration, bean lifecycle, AOP (P0) — `dependency-injection/autowired.md`, `misc/folder-structure/` (DDD architecture, controller/service/repository/components)
+- [ ] **Data Persistence** — Hibernate/JPA lifecycle, dirty checking, `@Transactional` propagation, solving N+1 (P0) — `persistence/jpa/` (basic JPA models, repositories, derived queries exist; lifecycle/transactional not covered yet)
 - [ ] **Concurrency** — `ExecutorService`, `CompletableFuture`, synchronized/locks, Virtual Threads/Project Loom (P1)
 - [ ] **JVM Internals** — heap/stack/metaspace, ClassLoaders, JIT, GC tuning (P2 — strong debugging/senior signal)
 - [ ] Build & Deploy — Maven/Gradle, fat JARs, JVM flags (P1)
