@@ -25,7 +25,7 @@ The learning path at `learning-process/LEARNING_PATH.md` is the canonical roadma
 ### 3. Daily Study Recommendations
 
 When I ask "what should I study today?" (or similar):
-- Follow the priority/sequence order in `LEARNING_PATH.md` (Phases 1 → 6, P0 → P1 → P2).
+- Follow the priority/sequence order in `LEARNING_PATH.md` (Phases 1 → 9, P0 → P1 → P2).
 - Identify the **next uncovered topic** that is highest priority.
 - Tell me:
   - **What** to study (specific topic and sub-topics)
@@ -64,7 +64,10 @@ When I ask "what should I study today?" (or similar):
   - `data-engineering/` → Phase 6A (Data Engineering)
   - `ai-integration/` → Phase 6D (AI/LLM Integration)
   - `integration/` → Phase 6C (Enterprise Integration)
-  - `personal-growth/japanese/` → Japanese language study (not in LEARNING_PATH.md but critical for Japan FDE)
+  - `projects/` → Phase 7 (Projects & Portfolio)
+  - `business/` → Phase 8 (Business / Customer Engineering)
+  - `interview-prep/` → Phase 9 (Interview Preparation)
+  - `personal-growth/japanese/` → Japanese Language Track
   - `personal-growth/escape/` → Extra-curriculars & life outside work
   - `personal-growth/savings/` → Personal finance & tax strategy
 
@@ -83,3 +86,6 @@ When starting new topics, create these directories if they don't exist:
 - `personal-growth/japanese/`
 - `languages/python/`
 - `languages/typescript/`
+- `projects/`
+- `business/`
+- `interview-prep/`
