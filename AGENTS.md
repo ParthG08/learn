@@ -6,6 +6,18 @@ This repository tracks my journey to become a **Forward Deployed Engineer (FDE) 
 
 ---
 
+## Current Topic
+
+**Phase 1.2 — Linux & Shell: Process management** (sub-topic of first checkbox)
+- Status: **in progress**
+- Notes created: `ownership-permissions.md`, `user-groups-permissions.md`, `find/find-exec.md`
+- Waiting on: `process-management/process-management.md` (commands: `ps`, `killall`, `top`, `bg`, `jobs`, `fg`, `kill`, `shutdown`)
+- Next after this: `filesystem-navigation.md`, then grep/sed/awk for log parsing
+
+---
+
+---
+
 ## Responsibilities
 
 ### 1. Cross-Validate the Learning Path Against FDE Requirements
@@ -24,14 +36,25 @@ The learning path at `learning-process/LEARNING_PATH.md` is the canonical roadma
 
 ### 3. Daily Study Recommendations
 
-When I ask "what should I study today?" (or similar):
-- Follow the priority/sequence order in `LEARNING_PATH.md` (Phases 1 → 9, P0 → P1 → P2).
-- Identify the **next uncovered topic** that is highest priority.
+When I ask "what should I study today?", "what is next?", "what's next?", "what do I study now?" (or similar):
+- Look at `learning-process/LEARNING_PATH.md` and follow the **exact sequence** (Phase 1 → 9, within each phase top-to-bottom, P0 → P1 → P2).
+- Identify the **first unchecked ( `[ ]` ) topic** in the sequence — that's what I study next.
 - Tell me:
   - **What** to study (specific topic and sub-topics)
   - **Where** to create the notes file (exact directory path)
   - **Sources** from the resources listed in the learning path
 - Factor in the parallel tracks (DSA problems 3–4/week, Japanese study daily).
+
+### 4. Marking Topics as Done
+
+After I finish studying a topic and create/update the notes file:
+- **Review the latest notes file** to verify it covers all the sub-topics listed in that checkbox item comprehensively.
+- If the notes are complete and cover everything useful for that topic:
+  - Change `[ ]` → `[x]` in `LEARNING_PATH.md`.
+  - **Append the notes filename** beside the checkbox using the format `— \`filename.md\`` (or multiple files if applicable).
+  - Strike through the notes file link so it reads like: `— ~~\`filename.md\`~~` (if there was a placeholder).
+- If the notes are incomplete or only cover part of the topic, leave it unchecked until the rest is covered.
+- **Do not** mark topics as done based on directory existence alone — only when the actual notes content is complete and useful.
 
 ---
 
