@@ -43,10 +43,10 @@
 - **Resources:** *Pro Git* (free, git-scm.com/book), Learn Git Branching (interactive, learngitbranching.js.org), GitHub Docs
 
 ### 2. Linux & Shell — `tools/cli-tools/bash/` (P0)
-- [ ] Filesystem navigation, permissions (`chmod`/`chown`), process management (`ps`, `top`, `kill`, `systemctl`)
+- [x] Filesystem navigation, permissions (`chmod`/`chown`), process management (`ps`, `top`, `kill`, `systemctl`) — `filesystem-navigation.md`, `ownership-permissions.md`, `user-groups-permissions.md`, `process-management.md`
 - [ ] `grep`/`sed`/`awk` for log parsing — single biggest time-saver when debugging prod
 - [x] Piping, redirection, `find` + `xargs` — `find/find-exec.md`
-- [ ] Bash scripting: variables, loops, conditionals, functions
+- [x] Bash scripting: variables, loops, conditionals, functions — `bash-scripting.md`
 - [ ] `tail -f`, `journalctl` for live log reading
 - [ ] `ssh`, `scp`, `tmux`/`screen`
 - **Resources:** *The Linux Command Line* (free PDF, William Shotts), explainshell.com, ShellCheck (linter)
