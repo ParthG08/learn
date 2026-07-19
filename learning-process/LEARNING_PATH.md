@@ -44,10 +44,10 @@
 
 ### 2. Linux & Shell — `tools/cli-tools/bash/` (P0)
 - [x] Filesystem navigation, permissions (`chmod`/`chown`), process management (`ps`, `top`, `kill`, `systemctl`) — `filesystem-navigation.md`, `ownership-permissions.md`, `user-groups-permissions.md`, `process-management.md`
-- [ ] `grep`/`sed`/`awk` for log parsing — single biggest time-saver when debugging prod
+- [x] `grep`/`sed`/`awk` for log parsing — `grep.md`, `sed.md`, `awk.md`
 - [x] Piping, redirection, `find` + `xargs` — `find/find-exec.md`
 - [x] Bash scripting: variables, loops, conditionals, functions — `bash-scripting.md`
-- [ ] `tail -f`, `journalctl` for live log reading
+- [x] `tail -f`, `journalctl` for live log reading — `tail-journalctl.md`
 - [ ] `ssh`, `scp`, `tmux`/`screen`
 - **Resources:** *The Linux Command Line* (free PDF, William Shotts), explainshell.com, ShellCheck (linter)
 
