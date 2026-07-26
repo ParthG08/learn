@@ -97,7 +97,7 @@ After I finish studying a topic and create/update the notes file:
   - `projects/` → Phase 7 (Projects & Portfolio)
   - `business/` → Phase 8 (Business / Customer Engineering)
   - `interview-prep/` → Phase 9 (Interview Preparation)
-  - `personal-growth/japanese/` → Japanese Language Track
+  - `personal-growth/japan/` → Japanese language study (not in LEARNING_PATH.md but critical for Japan FDE)
   - `personal-growth/escape/` → Extra-curriculars & life outside work
   - `personal-growth/savings/` → Personal finance & tax strategy
 
@@ -113,7 +113,7 @@ When starting new topics, create these directories if they don't exist:
 - `messaging/`
 - `infrastructure/multi-cloud/`
 - `system-design/distributed-systems/`
-- `personal-growth/japanese/`
+- `personal-growth/japan/`
 - `languages/python/`
 - `languages/typescript/`
 - `projects/`
