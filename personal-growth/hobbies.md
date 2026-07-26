@@ -80,6 +80,19 @@ Travelling done well forces adaptability, problem-solving (missed flights, langu
 
 Dancing is high-agency physical expression. It builds body awareness, confidence, rhythm (pattern recognition), social skills, and presence — you cannot dance well while scrolling your phone. It's a forced digital detox and a workout simultaneously. Salsa, bachata, hip-hop — whatever form — it trains you to be in your body, not just your head. FDEs need that balance.
 
+### Playing Sports (Investing Time to Be Decent)
+**Verdict: Strong producer activity — with a volume cap.**
+
+Playing sports is one of the highest-ROI physical hobbies you can have. Gym builds raw strength and stamina. Sport adds layers gym doesn't touch: **strategic thinking under pressure** (reading plays, anticipating opponents, split-second decisions — the same mental circuit you fire during a production incident), **teamwork and communication** (coordinating under fatigue), **resilience through failure** (you lose matches, make errors, get back up), and **deliberate practice toward a measurable skill** (getting better at a serve, a shot, a move). That deliberate-practice mindset is the exact same muscle you use to improve at coding, debugging, or system design.
+
+The fact that you're investing real effort to be *decent* — not just showing up casually — puts this firmly in producer territory. You're building a skill, not consuming entertainment.
+
+**The "multiple sports" concern:** This is a time-management problem, not a hobby-quality problem. Playing 2-3 sports at a serious level can easily eat 12-18 hours/week with practice, travel, and recovery. That competes directly with career-building time. The fix is not to quit sports — it's to cap volume. One primary sport + one secondary for cross-training is sustainable. Three at high intensity is not (unless you're a professional athlete, which you're not).
+
+**The injury risk is real** — higher than gym training — and an injury that sidelines you for weeks impacts everything else on this roadmap. Train smart. Warm up. Don't play through pain.
+
+**Bottom line:** Sports = producer. Multiple sports = fine with a time cap. Playing sports well enough to be "the decent player" = high-agency, compound-growth activity. Just don't let it become the main thing unless it *is* the main thing.
+
 ---
 
 ## The Commitment

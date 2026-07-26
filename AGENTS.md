@@ -1,5 +1,12 @@
 # AGENTS.md — opencode Instructions for FDE Learning Repository
 
+## Web Search/Scraping Tools Policy (Exa + Firecrawl)
+
+- **Only use Exa tools (`exa_web_search_exa`, `exa_web_fetch_exa`, `exa_web_search_advanced_exa`) and Firecrawl CLI tools (`firecrawl scrape`, `firecrawl search`, etc.) when the user explicitly says the phrase: "deep research with exa and firecrawl".** Otherwise, do not touch them.
+- Each time Exa or Firecrawl is used, hit the respective usage/status API and report credits remaining:
+  - Firecrawl: `npx -y firecrawl-cli@latest --status`
+  - Exa: TBD (check Exa dashboard or API for credit usage endpoint)
+
 ## Context
 
 This repository tracks my journey to become a **Forward Deployed Engineer (FDE) in Japan** within 2–3 years. The `learning-process/LEARNING_PATH.md` defines the full skills roadmap. I create notes as Markdown files for everything I study. opencode's job is to:
