@@ -1,0 +1,4 @@
+76_Minimum_Window_Substring (1)
+37_PSudoku_Solver(1)
+224_Basic_Calculator.cpp (better approach written in the solution file comments) did get accepted though
+212_Word_Search_II_2.cpp(better approach written in the solution file comments) did ont get accepted
