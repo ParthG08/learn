@@ -36,7 +36,7 @@
 - [x] Stash, cherry-pick — `patch.md`
 - [x] `git bisect` for regression hunting — `bisect.md`
 - [x] Reflog (recovering "lost" commits) — `recovery.md`
-- [ ] `git blame`, `log -p`, `log --follow` for code archaeology
+- [x] `git blame`, `log -p`, `log --follow` for code archaeology — `git-blame.md`
 - [ ] `.gitignore`, pre-commit hooks
 - [ ] **GitHub Workflow** — forking, pull requests (create, review, merge), code review best practices, protected branches, CI integration
 - [ ] P2: submodules, worktrees
