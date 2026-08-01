@@ -1,14 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "exa": {
-      "type": "remote",
-      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
-      "enabled": true,
-      "headers": {
-        "x-api-key": "a69f8f9f-edc4-47d8-88de-f39c0d2c11e5"
-      }
-    },
     "jina": {
       "type": "remote",
       "url": "https://mcp.jina.ai/v1",
