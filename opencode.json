@@ -5,6 +5,12 @@
       "type": "remote",
       "url": "https://mcp.jina.ai/v1",
       "enabled": true
+    },
+    "gptr-mcp": {
+      "type": "local",
+      "command": "/home/parth/Desktop/code/github/gptr-mcp/.venv/bin/python",
+      "args": ["/home/parth/Desktop/code/github/gptr-mcp/server.py"],
+      "enabled": true
     }
   }
 }
