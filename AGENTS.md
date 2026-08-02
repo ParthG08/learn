@@ -89,6 +89,32 @@ Every `.md` note in this repo is a review card. The SRS engine is `scripts/srs.p
 
 ---
 
+## LeetCode Solutions Sync (.cpp ↔ .md)
+
+`dsa/lc-solutions/` keeps every solution as a pair of files that must stay in sync:
+
+- `NAME.cpp` — the code (source of truth, you compile/test this)
+- `NAME.cpp.md` — an Obsidian-friendly mirror (header + the code in a ` ```cpp ` fence)
+
+**Consistency rule:** when you create or change a solution, always keep both files
+consistent — the two are meant to display the same code.
+
+**The canonical, reliable way is the sync script `scripts/lc_sync.py`** (do not hand-edit
+the `.md` code block):
+- `python scripts/lc_sync.py` — regenerate every `.cpp.md` mirror from its `.cpp`
+- `python scripts/lc_sync.py md2cpp` — push an edited `.md` code block back into `.cpp`
+- `python scripts/lc_sync.py check` — report any pair that has drifted
+
+**Workflow to follow:**
+1. Edit the `.cpp` normally (or edit the code block in the `.md` in Obsidian).
+2. Run the appropriate sync command above to update the mirror.
+3. Run `python scripts/lc_sync.py check` to confirm the pair is in sync before finishing.
+
+Do not let the `.cpp` and its `.cpp.md` diverge — if a pair is out of sync, run the script
+to reconcile, and note which file was the intended source.
+
+---
+
 ## Notes File Conventions
 
 - Notes are Markdown (`.md`) files inside the topic's directory.
