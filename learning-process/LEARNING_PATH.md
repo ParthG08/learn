@@ -503,32 +503,125 @@ Learn CS/IT terminology in Japanese — critical for FDE work in Japanese enterp
 
 > Build projects that simulate real FDE work — client-oriented, full-stack, deployed. Quality over quantity: 3–4 polished, deployed projects with architecture docs and demo videos beat 10 half-finished tutorials.
 
-### 1. Enterprise RAG Chatbot — `projects/rag-chatbot/`
-- [ ] **Authentication** — multi-tenant auth, JWT/session management, user-scoped access to documents
-- [ ] **Chat history** — persistent conversation storage, context management across sessions
-- [ ] **Document ingestion** — PDF/HTML/CSV parsing, chunking, embedding, vector storage
-- [ ] Admin dashboard — document management, usage analytics, user management
-- **Resources:** LangChain docs, OpenAI docs, pgvector docs
+> **Core principle:** You're already a backend engineer — don't build random CRUD apps or clones of websites (Twitter clone, e-commerce store, etc.). Those teach you nothing new. Build projects that force you to solve messy business problems, integrate systems you don't control, analyze data, and work directly with users: the core of Forward Deployed Engineering. Everything below is **ranked by FDE relevance** — the higher the rank, the more it mirrors real FDE work, so prioritize accordingly.
 
-### 2. AI Support Agent — `projects/support-agent/`
-- [ ] **Tool integration** — CRM (HubSpot/Salesforce), ticketing (Zendesk/Jira), knowledge base, Slack/Teams
-- [ ] **Analytics dashboard** — ticket resolution rates, user satisfaction, common query patterns
-- [ ] **Cloud deployment** — containerized (Docker), CI/CD pipeline, cloud hosting (AWS/GCP), domain + TLS
-- **Resources:** OpenAI function calling docs, Slack API, Zapier/Retool for rapid prototyping
+### FDE Project Ranking
 
-### 3. Operations Dashboard — `projects/ops-dashboard/`
-- [ ] **Real-time metrics** — WebSocket-based live updates, Prometheus/Grafana integration
-- [ ] **Alerts** — threshold-based alerting, PagerDuty/Slack notification integration
-- [ ] Multi-service health monitoring — uptime tracking, latency monitoring, error rate dashboards
-- **Resources:** Grafana docs, WebSocket basics, React/Streamlit for frontend
+| Rank | Project | Skills Learned |
+|---|---|---|
+| 1 | ERP Integration Platform | APIs, ETL, data mapping, auth, customer integration |
+| 2 | Internal AI Operations Assistant | LLMs, RAG, tools, agents, prompt engineering |
+| 3 | Real-time Logistics Dashboard | Kafka, streaming, observability, analytics |
+| 4 | Workflow Automation Engine (Zapier clone) | Event systems, orchestration, integrations |
+| 5 | Customer Data Platform (CDP) | Data engineering, SQL, warehousing |
+| 6 | Incident Response Platform | Monitoring, distributed systems, debugging |
+| 7 | Feature Flag & Experimentation Platform | A/B testing, metrics, rollout |
+| 8 | Supply Chain Optimizer | Optimization, algorithms, business logic |
+| 9 | Fraud Detection System | ML integration, rules engine, streaming |
+| 10 | Multi-tenant SaaS Platform | Architecture, security, RBAC |
 
-### 4. Multi-Tenant SaaS Platform — `projects/saas-platform/`
-- [ ] **RBAC** — role-based access control across tenants, data isolation
-- [ ] **Monitoring** — per-tenant metrics, tenant health dashboards, usage billing tracking
-- [ ] Tiered plans — feature gating by subscription tier, usage quotas
+### Ideal Progression (build in this order)
+
+**ERP Integration Platform → Workflow Automation Engine → Real-time Logistics Platform → Customer Data Platform → AI Operations Copilot → Incident Response Platform → Supply Chain Optimizer**
+
+This sequence mirrors the progression from strong backend engineer to the type of engineer who can sit with a customer, understand their business processes, integrate disparate systems, build production software quickly, and apply AI where it creates measurable value — the core responsibilities of a Forward Deployed Engineer. (Note: the AI Operations Assistant is ranked #2 in value but sits 5th in the sequence so you build the data/infra foundations first.)
+
+### 1. Enterprise ERP Integration Platform — `projects/erp-integration/` ⭐⭐⭐⭐⭐
+- [ ] Connect real systems: SAP, Salesforce, HubSpot, Stripe, Slack, Jira, PostgreSQL
+- [ ] **OAuth** — full authorization flows for each external API
+- [ ] **Webhooks** — receiving and verifying inbound events from external systems
+- [ ] **Scheduled sync** — background jobs that pull/push data on a cadence
+- [ ] **Retry queues** — dead-lettering, exponential backoff, idempotent processing
+- [ ] **Data transformation** — field mapping, schema normalization across systems
+- [ ] **Conflict resolution** — last-write-wins, manual merge, field-level versioning
+- Learn: APIs, enterprise integrations, ETL, data mapping, customer engineering
+
+### 2. Internal AI Operations Assistant — `projects/ai-ops-assistant/` ⭐⭐⭐⭐⭐
+- [ ] Natural-language query over ops data — "Which shipments are delayed?"
+- [ ] **Tool calling** — LLM selects and executes tools: query PostgreSQL, query Elasticsearch, call external APIs
+- [ ] **RAG** over internal docs and runbooks
+- [ ] **Agents** — multi-step reasoning to answer compound questions
+- [ ] **Summarization & report generation** — turn query results into stakeholder-ready output
+- Learn: RAG, tool calling, MCP, agents, vector DBs, prompt engineering
+- Absorbs the old `projects/rag-chatbot/` + `projects/support-agent/` ideas (document RAG + tool/customer integration)
+
+### 3. Real-time Logistics Platform — `projects/logistics-platform/`
+- [ ] Shipment tracking with live status updates
+- [ ] Courier/driver integration (GPS pings, status webhooks)
+- [ ] **Kafka** event stream for the shipment lifecycle
+- [ ] Route optimization
+- [ ] Live dashboard — WebSocket-based updates, Prometheus/Grafana
+- [ ] **Alerts** — delayed shipment detection, SLA-breach notifications
+- Stack: **Kafka, Go, PostgreSQL, Redis**
+- Absorbs the old `projects/ops-dashboard/` idea (real-time metrics + alerts)
+
+### 4. Workflow Automation Engine (Zapier clone) — `projects/workflow-engine/`
+- [ ] Pipeline: Webhook → Transform → LLM → Slack → Email
+- [ ] **Event system** — triggers, conditions, actions
+- [ ] **Orchestration** — step/state machine execution, parallel branches
+- [ ] **Queues** — buffering, backpressure, DLQs
+- [ ] **Retries** — idempotency, at-least-once delivery, exponential backoff
+- Learn: orchestration, queues, workflows, retries, integrations
+
+### 5. Customer Data Platform (CDP) — `projects/cdp/`
+- [ ] **Ingest** from Stripe, Shopify, Salesforce, CRM exports, CSV
+- [ ] **Store** in PostgreSQL / Snowflake
+- [ ] **dbt** models, transformations, tests, lineage
+- [ ] Dashboards and analytics
+- [ ] Natural-language SQL generation over the warehouse
+- Learn: data engineering, SQL, warehousing
+
+### 6. Incident Response Platform — `projects/incident-response/`
+- [ ] **Monitoring** — ingest logs, traces, metrics (OpenTelemetry)
+- [ ] **Alerts** — threshold/SLO-based, on-call routing
+- [ ] **Incident workflow** — acknowledge, escalate, resolve (PagerDuty-like)
+- [ ] **Root cause analysis** — correlate across logs/traces/metrics
+- [ ] **AI summaries** — LLM-generated incident postmortems
+- Learn: monitoring, distributed systems, debugging
+
+### 7. Feature Flag & Experimentation Platform — `projects/feature-flags/`
+- [ ] **Feature flags** — kill switches, gradual rollout (LaunchDarkly-like)
+- [ ] **Experimentation** — A/B assignment, targeting rules
+- [ ] **Metrics** — track and report experiment outcomes
+- [ ] Rollout safety — progressive exposure, automatic rollback
+- Learn: A/B testing, metrics, rollout, production risk management
+
+### 8. Supply Chain Optimizer — `projects/supply-chain/`
+- [ ] **Inputs:** warehouses, trucks, orders
+- [ ] **Output:** optimized schedule
+- [ ] **Optimization** — vehicle routing, assignment problems
+- [ ] **Graph algorithms** — shortest path, scheduling, constraint solving
+- [ ] **Heuristics** — greedy/approximation when exact is too slow
+- [ ] Business-logic modeling — constraints, costs, service levels
+- Learn: optimization, graph algorithms, heuristics, business logic
+
+### 9. Fraud Detection System — `projects/fraud-detection/`
+- [ ] **Streaming** — Kafka event pipeline for transactions/behaviors
+- [ ] **Rules engine** — configurable thresholds and conditions
+- [ ] **ML model integration** — anomaly/risk scoring
+- [ ] **Alerting** — real-time flagging, case review queue
+- Learn: ML integration, rules engines, streaming
+
+### 10. Multi-Tenant SaaS Platform — `projects/saas-platform/`
+- [ ] **RBAC** — roles, permissions, data isolation across tenants
+- [ ] **Organizations** — tenant lifecycle, onboarding
+- [ ] **Billing** — Stripe integration, usage-based billing
+- [ ] **Audit logs** — per-tenant action logging
+- [ ] **SSO** — SAML/OIDC
+- [ ] **Rate limiting** — per-tenant quotas and throttling
 - **Resources:** Auth0/Okta for multi-tenant auth, Terraform for infra, Stripe for billing
 
-### 5. Project Polish (apply to all projects above)
+### Technologies You Should Touch Across These Projects
+
+- **Backend:** Go, Python, TypeScript
+- **Data:** PostgreSQL, Redis, Elasticsearch, DuckDB, Snowflake (or BigQuery)
+- **Streaming:** Kafka, RabbitMQ
+- **AI:** OpenAI API, Anthropic API, LangGraph, MCP, RAG, vector databases
+- **Infrastructure:** Docker, Kubernetes, Terraform, AWS
+- **Observability:** OpenTelemetry, Prometheus, Grafana, Jaeger
+- **Integrations:** Slack, Jira, Salesforce, HubSpot, Stripe, GitHub
+
+### 11. Project Polish (apply to all projects above)
 - [ ] **Documentation** — README, setup guide, API docs (OpenAPI/Swagger), architecture overview
 - [ ] **Architecture diagrams** — system context, container, component diagrams (C4 model, draw.io, Excalidraw)
 - [ ] **Demo videos** — 3–5 min walkthrough showing the problem, solution, architecture, and demo
