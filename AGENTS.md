@@ -65,6 +65,56 @@ After I finish studying a topic and create/update the notes file:
 
 ---
 
+## Spaced Repetition System (SRS)
+
+Every `.md` note in this repo is a review card. The SRS engine is `scripts/srs.py`
+(SM-2 algorithm, standard-library only, no deps). Performance lives in `.srs/state.json`
+(never the quiz content — quizzes are generated fresh each session).
+
+**Engine commands:**
+- `python scripts/srs.py today` — list due cards, grouped by topic (optionally `--topic DIR`)
+- `python scripts/srs.py update <path> <rating>` — record `again|hard|good|easy`, recompute schedule
+- `python scripts/srs.py schedule` — upcoming reviews per topic
+- `python scripts/srs.py stats` — deck summary
+
+**The review session loop** (when I say "review", "revise", "quiz me", or "SRS"):
+1. Run `python scripts/srs.py today` → get the due cards.
+2. For each due card, **read the `.md` file** and drive a free-recall session:
+   - Present the key points from the notes
+   - Ask one open-ended question at a time (no MCQs), let me answer from memory
+   - Grade honestly: `again` = forgot, `hard` = struggled, `good` = recalled, `easy` = trivial
+3. After my answer, run `python scripts/srs.py update <path> <rating>` for that card.
+4. Report the new interval for each card, then summarize the remaining list.
+- Stop when the `today` list is empty or I call it.
+
+---
+
+## LeetCode Solutions Sync (.cpp ↔ .md)
+
+`dsa/lc-solutions/` keeps every solution as a pair of files that must stay in sync:
+
+- `NAME.cpp` — the code (source of truth, you compile/test this)
+- `NAME.cpp.md` — an Obsidian-friendly mirror (header + the code in a ` ```cpp ` fence)
+
+**Consistency rule:** when you create or change a solution, always keep both files
+consistent — the two are meant to display the same code.
+
+**The canonical, reliable way is the sync script `scripts/lc_sync.py`** (do not hand-edit
+the `.md` code block):
+- `python scripts/lc_sync.py` — regenerate every `.cpp.md` mirror from its `.cpp`
+- `python scripts/lc_sync.py md2cpp` — push an edited `.md` code block back into `.cpp`
+- `python scripts/lc_sync.py check` — report any pair that has drifted
+
+**Workflow to follow:**
+1. Edit the `.cpp` normally (or edit the code block in the `.md` in Obsidian).
+2. Run the appropriate sync command above to update the mirror.
+3. Run `python scripts/lc_sync.py check` to confirm the pair is in sync before finishing.
+
+Do not let the `.cpp` and its `.cpp.md` diverge — if a pair is out of sync, run the script
+to reconcile, and note which file was the intended source.
+
+---
+
 ## Notes File Conventions
 
 - Notes are Markdown (`.md`) files inside the topic's directory.

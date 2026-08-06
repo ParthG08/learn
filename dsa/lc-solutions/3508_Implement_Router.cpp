@@ -36,4 +36,3 @@ int main(){
     Solution sol;
     
 }
-
