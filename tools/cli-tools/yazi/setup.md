@@ -47,6 +47,27 @@ Reload: `source ~/.config/zsh/.zsh_aliases`
 - Config: `~/.config/yazi/` (e.g. `keymap.toml`, `yazi.toml`)
 - Repo reference: `tools/cli-tools/yazi/` (see `shortcuts.md`, `config.md`)
 
+## Open PDFs with zathura (default viewer)
+
+Zathura is the default PDF viewer (vim-keybindings — see
+`tools/cli-tools/zathura/setup.md`). In `~/.config/yazi/yazi.toml`, register it
+as an opener and prepend a rule so PDFs always open with zathura:
+
+```toml
+[opener]
+zathura = [
+    { run = "zathura %s1", orphan = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+    { mime = "application/pdf", use = "zathura" }
+]
+```
+
+- `orphan = true` — detaches zathura from yazi so it keeps running when yazi closes
+- `prepend_rules` — checked before the default rules, so PDFs go straight to zathura
+
 ## Verify
 
 ```bash
