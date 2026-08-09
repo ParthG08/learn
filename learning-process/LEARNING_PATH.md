@@ -48,7 +48,7 @@
 - [x] Piping, redirection, `find` + `xargs` — `find/find-exec.md`
 - [x] Bash scripting: variables, loops, conditionals, functions — `bash-scripting.md`
 - [x] `tail -f`, `journalctl` for live log reading — `tail-journalctl.md`
-- [ ] `ssh`, `scp`, `tmux`/`screen`
+- [x] `ssh`, `scp`, `tmux`/`screen` — `ssh-scp-tmux.md`
 - **Resources:** *The Linux Command Line* (free PDF, William Shotts), explainshell.com, ShellCheck (linter)
 
 ### 3. Programming Language (Primary)
