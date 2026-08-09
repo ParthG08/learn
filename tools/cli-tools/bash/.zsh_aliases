@@ -1,0 +1,20 @@
+# User aliases — reference copy kept in the learn repo.
+# Actual live file: ~/.config/zsh/.zsh_aliases (sourced from $ZDOTDIR/.zshrc)
+
+# opencode
+alias oc="opencode"
+alias occ="opencode --continue"
+
+# git — checkout branch via fzf
+alias gcb='git checkout $(git branch | fzf)'
+
+# yazi — open yazi, cd to the last directory on quit (a plain alias can't run
+# code after the program exits, so this is a function)
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
