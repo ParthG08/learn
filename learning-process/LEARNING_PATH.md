@@ -632,6 +632,8 @@ This sequence mirrors the progression from strong backend engineer to the type o
 ## Phase 8: Business / Customer Engineering
 
 > FDEs are not pure engineers — you're a technical consultant embedded with the client. These skills differentiate a good engineer from an effective FDE.
+>
+> **Career context:** the communication-heavy skills in this phase are what make the FDE role AI-resistant and open the door to adjacent exits (Solutions Architect, Sales Engineer, TAM). See `forward-deployed-engineer/japan-vs-us-fde-strategy.md` for the full Japan→US strategy and retirement-funding plan (`personal-growth/savings/adventure-retirement-plan.md`).
 
 ### 1. Customer-Facing Skills (P0)
 - [ ] **Requirement Gathering** — structured discovery sessions, asking the right questions, distinguishing needs from wants, documenting requirements back to the client for verification

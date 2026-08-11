@@ -38,8 +38,15 @@
   - Help them expand into the Japanese market.
   - Leverage Japanese language + FDE skills to bring in Japanese clients.
 
+### Phase 6: The Japan → US Bridge (funding the early retirement plan)
+- Work as an FDE in Japan for **6–7 years** (build track record + Japanese), then move to the US via **internal transfer** (Palantir, Google, Amazon, Microsoft all support cross-region mobility) or a new application for **2–3 years**.
+- US FDE comp lets me save the **$240K–320K** adventure-retirement nest egg in **2–4 years** (vs. 5–8+ years in Japan).
+- **Fallback route:** master's in the US (1–2 years of study; see `masters/pathways.md`) — doable but not preferred.
+- **Adjacent communication-heavy roles** (AI-resistant, natural FDE exit): Solutions Architect, Sales Engineer, Technical Account Manager. See `forward-deployed-engineer/japan-vs-us-fde-strategy.md`.
+
 ---
 
 ## Notes
 - This file serves as reference context for AGENTS.md to align study plans and progress tracking with long-term career goals.
-- Updated: July 2026.
+- Related planning docs: `forward-deployed-engineer/japan-vs-us-fde-strategy.md` (US bridge + AI-resilience), `personal-growth/savings/adventure-retirement-plan.md` (nest-egg math), `personal-growth/escape/travel-visa-work-rules.md` (legal rules for working abroad).
+- Updated: August 2026.
