@@ -37,7 +37,7 @@
 - [x] `git bisect` for regression hunting — `bisect.md`
 - [x] Reflog (recovering "lost" commits) — `recovery.md`
 - [x] `git blame`, `log -p`, `log --follow` for code archaeology — `git-blame.md`
-- [ ] `.gitignore`, pre-commit hooks
+- [x] `.gitignore`, pre-commit hooks — `gitignore.md`, `precommit-hooks.md`
 - [ ] **GitHub Workflow** — forking, pull requests (create, review, merge), code review best practices, protected branches, CI integration
 - [ ] P2: submodules, worktrees
 - **Resources:** *Pro Git* (free, git-scm.com/book), Learn Git Branching (interactive, learngitbranching.js.org), GitHub Docs

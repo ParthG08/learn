@@ -1,0 +1,19 @@
+# Bash aliases — reference copy kept in the learn repo for new-machine setup.
+# Note: this machine uses zsh ($ZDOTDIR/.zshrc sources $ZDOTDIR/.zsh_aliases).
+# To use these in bash, source this file from ~/.bashrc.
+
+# opencode
+alias oc="opencode"
+alias occ="opencode --continue"
+
+# git — checkout branch via fzf
+alias gcb='git checkout $(git branch | fzf)'
+
+# git — update current branch (or a given branch: ucb <branch>)
+function ucb() {
+    if [ -n "$1" ]; then
+        git pull origin "$1" --no-rebase
+    else
+        git pull origin "$(git branch --show-current)" --no-rebase
+    fi
+}
