@@ -6,6 +6,12 @@
 alias oc="opencode"
 alias occ="opencode --continue"
 
+# pager — must be `less`, NOT `more`. glow's pager mode (`glow -p`, used by
+# yazi for .md preview) renders ANSI colors cleanly through less; through more
+# the output is garbled with huge gaps. Arch needs `sudo pacman -S less`.
+export PAGER=less
+export LESS="-R"
+
 # git — checkout branch via fzf
 alias gcb='git checkout $(git branch | fzf)'
 

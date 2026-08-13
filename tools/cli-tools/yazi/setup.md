@@ -68,6 +68,34 @@ prepend_rules = [
 - `orphan = true` — detaches zathura from yazi so it keeps running when yazi closes
 - `prepend_rules` — checked before the default rules, so PDFs go straight to zathura
 
+## Markdown preview with glow (critical: needs `less`)
+
+Opening `.md` files in yazi renders them via `glow` in pager mode:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[opener]
+glow = [
+  { run = 'glow -p "$1"', block = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+  { url = "*.md", use = "glow" },
+]
+```
+
+**Requirement — `less` must be installed and be the pager:**
+- Install: `sudo pacman -S less` (Arch). Without it, `glow -p` falls back to
+  `$PAGER`, and if that is `more`, the colored output renders garbled with big
+  gaps and truncated lines (`--More--` prompt is the tell-tale sign).
+- Ensure `export PAGER=less` in your shell aliases (`tools/cli-tools/bash/bash_aliases`).
+- `export LESS="-R"` so less passes glow's ANSI color codes through (raw
+  control chars) instead of printing them literally.
+- Keep the `-p` flag: without it glow prints to stdout and exits immediately,
+  so the preview flashes open and closes.
+- Other tools (man pages, `git diff`, etc.) also prefer `less` — same exports fix them.
+
 ## Verify
 
 ```bash
