@@ -1,5 +1,11 @@
 # AGENTS.md — opencode Instructions for FDE Learning Repository
 
+## Outside-the-Repo Changes Policy
+
+- **Never make changes outside the learn repo** (e.g., `~/.zshrc`, `~/.zsh_aliases`, `~/.bash_aliases`, home-dir configs).
+- If a task truly requires touching a file outside the repo, **ask the user once first** before doing it.
+- Shell config files live in the repo under `dotfiles/` (e.g., `dotfiles/zsh_aliases`, `dotfiles/bash_aliases`). These are the source of truth — edit them here, not the home-dir copies.
+
 ## Web Search/Scraping Tools Policy (Exa + Firecrawl)
 
 - **Only use Exa tools (`exa_web_search_exa`, `exa_web_fetch_exa`, `exa_web_search_advanced_exa`) and Firecrawl CLI tools (`firecrawl scrape`, `firecrawl search`, etc.) when the user explicitly says the phrase: "deep research with exa and firecrawl".** Otherwise, do not touch them.
