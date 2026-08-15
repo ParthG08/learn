@@ -13,6 +13,26 @@ sudo apt install yazi
 brew install yazi
 ```
 
+## glow — markdown renderer
+
+glow renders `.md` files inside yazi. Install via the package manager:
+
+```bash
+sudo pacman -S glow        # Arch
+brew install glow          # macOS
+```
+
+Or as a user-level binary (no sudo, installed to `~/.local/bin` on this
+machine):
+
+```bash
+curl -sL https://github.com/charmbracelet/glow/releases/latest/download/glow_Linux_x86_64.tar.gz -o /tmp/glow.tar.gz
+tar -xzf /tmp/glow.tar.gz -C /tmp && cp /tmp/glow_*_Linux_x86_64/glow ~/.local/bin/
+chmod +x ~/.local/bin/glow
+```
+
+Requires `~/.local/bin` on `PATH` (it is on this machine).
+
 ## Shell Function (`y`)
 
 `y` opens yazi **and** cds into the directory you ended in when you quit.
@@ -84,6 +104,12 @@ prepend_rules = [
   { url = "*.md", use = "glow" },
 ]
 ```
+
+**Why `url = "*.md"` and not `mime = "text/markdown"`:** `file` reports `.md`
+files as `text/plain` (no system markdown mime mapping), so a mime-based rule
+never matches and yazi falls back to a broken default opener (exit 127).
+Matching on the filename glob `*.md` is reliable. The rule field is `url` — a
+`name` field doesn't exist and causes a TOML validation error.
 
 **Requirement — `less` must be installed and be the pager:**
 - Install: `sudo pacman -S less` (Arch). Without it, `glow -p` falls back to

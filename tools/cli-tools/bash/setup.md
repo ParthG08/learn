@@ -1,6 +1,6 @@
 # Shell Setup — zsh aliases & config
 
-Setup notes for the zsh shell environment. Companion guides: `zoxide/setup.md`, `fzf/setup.md`.
+Setup notes for the zsh shell environment. Companion guides: `zoxide/setup.md`, `fzf/setup.md`, `cclip/setup.md`.
 
 ## Config Location (IMPORTANT)
 

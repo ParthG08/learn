@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# tmux-window-fzf — fuzzy-switch tmux windows (used by prefix+f popup)
+choice=$(tmux list-windows -F '#I:#W' | fzf --reverse --preview 'tmux display-popup -E bash -c "echo Window #{}"' --preview-window=hidden 2>/dev/null)
+[ -z "$choice" ] && exit 0
+tmux select-window -t "${choice%%:*}"

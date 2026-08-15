@@ -20,3 +20,8 @@ desc = "Open shell in current directory"
 on   = [ ";" ]
 run  = "shell --interactive"
 desc = "Run shell command"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "v" ]
+run  = 'shell "/home/parth/.local/bin/glow -p %s" --block'
+desc = "View markdown with glow"

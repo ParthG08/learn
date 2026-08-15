@@ -4,7 +4,39 @@
 
 - **Never make changes outside the learn repo** (e.g., `~/.zshrc`, `~/.zsh_aliases`, `~/.bash_aliases`, home-dir configs).
 - If a task truly requires touching a file outside the repo, **ask the user once first** before doing it.
-- Shell config files live in the repo under `dotfiles/` (e.g., `dotfiles/zsh_aliases`, `dotfiles/bash_aliases`). These are the source of truth — edit them here, not the home-dir copies.
+- Shell config files are maintained **in this repo** as replicas under `tools/cli-tools/bash/` (`.zsh_aliases`, `bash_aliases`). These replicas are the source of truth — edit them here, then sync to the home-dir copies (see "Work Environment Replica" below).
+
+## Work Environment Replica (dotfiles & setup)
+
+**Vision:** this repo is a portable replica of the user's working setup
+environment (shell configs, aliases, per-tool setup guides, tmux/nvim configs)
+so a brand-new machine — Linux or macOS — can be reproduced reliably. Replicas
+in the repo are the source of truth; home-dir copies get synced from them.
+
+- **Replica locations:**
+  - zsh aliases: `tools/cli-tools/bash/.zsh_aliases` → live `~/.config/zsh/.zsh_aliases`
+  - bash aliases: `tools/cli-tools/bash/bash_aliases` → live `~/.bash_aliases`
+  - shell setup guide: `tools/cli-tools/bash/setup.md` (also `fzf/setup.md`, `zoxide/setup.md`, `cclip/setup.md`, ...)
+  - tmux: `tools/cli-tools/tmux/tmux.conf` → `~/.config/tmux/tmux.conf` (+ `tmux-window-fzf` → `~/.local/bin/`, guide `setup.md`)
+  - nvim: `tools/cli-tools/nvim/.config/` → `~/.config/nvim/` (guide `setup.md`)
+  - yazi: `tools/cli-tools/yazi/{yazi.toml,keymap.toml}` → `~/.config/yazi/` (guide `setup.md`)
+  - git: `tools/cli-tools/git/setup.md` (global alias `git cb`)
+  - zathura: `tools/cli-tools/zathura/setup.md` (default PDF viewer)
+- **Sync rule:** keep each replica in sync with its live copy. Edit the replica
+  first, then copy to the live file (remember the outside-repo change policy —
+  ask first). Confirm with `diff` and a `source` + functional test.
+- **Cross-platform rule:** functions/aliases meant for both Linux and macOS
+  must auto-detect the platform backend at runtime (e.g. `cclip` uses
+  `wl-copy` → `xclip` → `pbcopy`). Never hard-code one platform.
+- **Every tool gets a `setup.md`** with install commands per platform
+  (Arch/Ubuntu/Fedora/macOS), wire-up steps, and verify steps — written so a
+  future automated script can consume them directly.
+- **Long-term goal — `setup.sh`:** a single script that installs the whole
+  environment (fzf, fd, yazi, all aliases/shortcuts, tmux config, nvim config,
+  etc.) and wires up the replicas on any machine. opencode helps build and
+  maintain it. Whenever a tool/alias is added, keep its replica + `setup.md`
+  ready for `setup.sh` to use.
+
 
 ## Web Search/Scraping Tools Policy (Exa + Firecrawl)
 
