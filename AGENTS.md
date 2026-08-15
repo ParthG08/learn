@@ -5,6 +5,7 @@
 - **Never make changes outside the learn repo** (e.g., `~/.zshrc`, `~/.zsh_aliases`, `~/.bash_aliases`, home-dir configs).
 - If a task truly requires touching a file outside the repo, **ask the user once first** before doing it.
 - Shell config files are maintained **in this repo** as replicas under `tools/cli-tools/bash/` (`.zsh_aliases`, `bash_aliases`). These replicas are the source of truth — edit them here, then sync to the home-dir copies (see "Work Environment Replica" below).
+- **Record every system setting change in the repo:** whenever the user changes (or asks you to change) any system-level setting — PAM/faillock, sudoers, bootloader, display manager, firewall, etc. — save the change in the repo too, as a replica file, a `setup.md` section, or a note, so a new machine can be reproduced and the change is never lost.
 
 ## Work Environment Replica (dotfiles & setup)
 
@@ -31,6 +32,10 @@ in the repo are the source of truth; home-dir copies get synced from them.
 - **Every tool gets a `setup.md`** with install commands per platform
   (Arch/Ubuntu/Fedora/macOS), wire-up steps, and verify steps — written so a
   future automated script can consume them directly.
+- **System-level settings also get recorded** (see policy above): e.g. the
+  hyprlock/faillock lockout fix lives in `tools/hyprland/setup.md`. If a change
+  doesn't fit an existing tool guide, create a `setup.md` section or a note
+  under the relevant `tools/` directory.
 - **Long-term goal — `setup.sh`:** a single script that installs the whole
   environment (fzf, fd, yazi, all aliases/shortcuts, tmux config, nvim config,
   etc.) and wires up the replicas on any machine. opencode helps build and
