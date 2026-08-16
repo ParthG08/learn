@@ -1,5 +1,7 @@
 # Backend & Cloud Engineer Roadmap — Ordered by Real-World Usage
 
+> **Practice:** every topic marked as hands-on has drills, playgrounds, and labs in `learning-process/practice-guide.md` (e.g. Learn Git Branching for Git, pgexercises for SQL, Killercoda for K8s). Read a note → drill there → reiterate.
+
 > Reordered so that what you'll actually touch at work in Week 1 is at the top, and what mostly matters for interviews/deep theory is at the bottom. Priority tags: **P0** = used daily/weekly, **P1** = used regularly, high-leverage, **P2** = situational but valuable, especially for senior roles.
 
 **One important caveat the original plan doesn't address:** if part of the goal of this year is also *getting* the job (not just being good at it once you have it), DSA cannot actually wait until Phase 5. Most US SDE interview loops still gate heavily on DSA regardless of seniority. The ordering below reflects "time spent once employed," not "interview prep priority." Practical fix: run a **light, parallel DSA track from Day 1** (3-4 problems/week, pattern-focused) alongside whatever phase you're in, and only go deep (Phase 5 intensity) in the final 2-3 months pre-interview-season.
@@ -29,7 +31,7 @@
 
 ## Phase 1: Daily Engineering Spine
 
-### 1. Git — `tools/git/` (P0)
+### 1. Git — `tools/git/` (P0) — Practice: [`practice-guide.md#git`](practice-guide.md#git)
 - [x] Daily flow: clone, branch, commit, push/pull/fetch, merge vs. rebase — `branching-merging.md`, `commits.md`, `remote-workflows.md`, `three-trees.md`
 - [x] **Interactive rebase** (squash, reorder, fixup) — `interactive-rebase.md`, `rewriting-history.md`
 - [x] Conflict resolution (real conflicts, not toy ones) — `conflict.md`
@@ -38,11 +40,11 @@
 - [x] Reflog (recovering "lost" commits) — `recovery.md`
 - [x] `git blame`, `log -p`, `log --follow` for code archaeology — `git-blame.md`
 - [x] `.gitignore`, pre-commit hooks — `gitignore.md`, `precommit-hooks.md`
-- [ ] **GitHub Workflow** — forking, pull requests (create, review, merge), code review best practices, protected branches, CI integration
-- [ ] P2: submodules, worktrees
+- [ ] **GitHub Workflow** — forking, pull requests (create, review, merge), code review best practices, protected branches, CI integration — `github-workflow.md`
+- [ ] P2: submodules, worktrees — `submodules-worktrees.md`
 - **Resources:** *Pro Git* (free, git-scm.com/book), Learn Git Branching (interactive, learngitbranching.js.org), GitHub Docs
 
-### 2. Linux & Shell — `tools/cli-tools/bash/` (P0)
+### 2. Linux & Shell — `tools/cli-tools/bash/` (P0) — Practice: [`practice-guide.md#linux--shell`](practice-guide.md#linux--shell), [`practice-guide.md#regex-used-daily-with-grepsedawk`](practice-guide.md#regex-used-daily-with-grepsedawk)
 - [x] Filesystem navigation, permissions (`chmod`/`chown`), process management (`ps`, `top`, `kill`, `systemctl`) — `filesystem-navigation.md`, `ownership-permissions.md`, `user-groups-permissions.md`, `process-management.md`
 - [x] `grep`/`sed`/`awk` for log parsing — `grep.md`, `sed.md`, `awk.md`
 - [x] Piping, redirection, `find` + `xargs` — `find/find-exec.md`
@@ -54,45 +56,45 @@
 ### 3. Programming Language (Primary)
 See [Language-Specific Tracks](#language-specific-tracks) at the bottom. Go deep on your primary work language now; treat the others as a lighter pass until you actually need them.
 
-### 4. Databases — `cs-fundamentals/dbms/` (P0, split out as requested)
+### 4. Databases — `cs-fundamentals/dbms/` (P0, split out as requested) — Practice: [`practice-guide.md#sql`](practice-guide.md#sql), [`practice-guide.md#database-practice-sandbox`](practice-guide.md#database-practice-sandbox)
 This deserves far more weight than the original generic "DBMS" entry — it's used more than design patterns and most cloud topics combined.
 
-- [ ] **SQL Mastery** — joins, subqueries, window functions, CTEs, aggregates (P0, daily)
-- [ ] **Indexes** — B-tree basics, composite indexes, covering indexes, when an index silently isn't used (P0)
+- [ ] **SQL Mastery** — joins, subqueries, window functions, CTEs, aggregates (P0, daily) — `sql-mastery.md`
+- [ ] **Indexes** — B-tree basics, composite indexes, covering indexes, when an index silently isn't used (P0) — `indexes.md`
 - [x] **Query Optimization** — reading `EXPLAIN ANALYZE`, query plans, solving N+1 (P0) — `query-optimization/comparison/warm-cache-compare.md`
-- [ ] **Transactions & Isolation Levels** — Read Committed, Repeatable Read, Serializable; dirty/phantom reads (P1)
-- [ ] **Locks & Deadlocks** — row vs. table locks, detecting and resolving deadlocks (P1)
-- [ ] **Redis** — strings/hashes/sets/sorted sets/lists; caching, rate limiting, leaderboards, pub/sub; eviction policies; RDB vs AOF persistence; Redis Cluster basics (P0)
-- [ ] **Data Modeling** — normalization vs. denormalization, SQL vs. NoSQL tradeoffs (P1)
-- [ ] **PostgreSQL Internals** — MVCC, WAL, vacuum, table bloat (P2, but a strong senior-engineer signal)
+- [ ] **Transactions & Isolation Levels** — Read Committed, Repeatable Read, Serializable; dirty/phantom reads (P1) — `transactions-isolation.md`
+- [ ] **Locks & Deadlocks** — row vs. table locks, detecting and resolving deadlocks (P1) — `locks-deadlocks.md`
+- [ ] **Redis** — strings/hashes/sets/sorted sets/lists; caching, rate limiting, leaderboards, pub/sub; eviction policies; RDB vs AOF persistence; Redis Cluster basics (P0) — `redis.md`
+- [ ] **Data Modeling** — normalization vs. denormalization, SQL vs. NoSQL tradeoffs (P1) — `data-modeling.md`
+- [ ] **PostgreSQL Internals** — MVCC, WAL, vacuum, table bloat (P2, but a strong senior-engineer signal) — `postgresql-internals.md`
 - **Resources:** *Use The Index, Luke!* (free, use-the-index-luke.com), *SQL Performance Explained* (Markus Winand), Redis University (free, redis.com/university), PostgreSQL official docs
 
-### 5. Docker — `tools/cli-tools/docker/` (P0)
-- [ ] Images vs. containers; Dockerfile best practices (multi-stage builds, layer caching)
-- [ ] `docker-compose` for local dev environments
-- [ ] Volumes & basic networking
-- [ ] Debugging running containers (`exec`, `logs`)
-- [ ] P2: image size optimization, basic security scanning
+### 5. Docker — `tools/cli-tools/docker/` (P0) — Practice: [`practice-guide.md#docker`](practice-guide.md#docker)
+- [ ] Images vs. containers; Dockerfile best practices (multi-stage builds, layer caching) — `images-containers-dockerfile.md`
+- [ ] `docker-compose` for local dev environments — `docker-compose.md`
+- [ ] Volumes & basic networking — `volumes-networking.md`
+- [ ] Debugging running containers (`exec`, `logs`) — `debugging-containers.md`
+- [ ] P2: image size optimization, basic security scanning — `image-optimization-security.md`
 - **Resources:** Docker official "Get Started" docs, *Docker Deep Dive* (Nigel Poulton)
 
-### 6. API Design — `api-design/` (P0, **new — biggest gap in the original plan**)
-- [ ] REST fundamentals — resource modeling, correct HTTP verbs/status codes
-- [ ] **Idempotency** — critical for retries/payments, frequently underestimated
-- [ ] **Pagination** — cursor-based vs. offset-based, and why cursor wins at scale
-- [ ] **API Gateway** — gateway vs. direct client-to-service, routing, aggregation, authentication offloading, rate limiting at gateway level
-- [ ] **Versioning** strategies (URI, header, content negotiation)
-- [ ] **Rate Limiting** — token bucket, sliding window
-- [ ] **Authentication** (API keys, OAuth2, JWT) vs. **Authorization** (RBAC, scopes)
-- [ ] OpenAPI/Swagger spec writing
-- [ ] gRPC + protobuf for internal service-to-service calls
-- [ ] Error response conventions
+### 6. API Design — `api-design/` (P0, **new — biggest gap in the original plan**) — Practice: [`practice-guide.md#api-design`](practice-guide.md#api-design)
+- [ ] REST fundamentals — resource modeling, correct HTTP verbs/status codes — `rest-fundamentals.md`
+- [ ] **Idempotency** — critical for retries/payments, frequently underestimated — `idempotency.md`
+- [ ] **Pagination** — cursor-based vs. offset-based, and why cursor wins at scale — `pagination.md`
+- [ ] **API Gateway** — gateway vs. direct client-to-service, routing, aggregation, authentication offloading, rate limiting at gateway level — `api-gateway.md`
+- [ ] **Versioning** strategies (URI, header, content negotiation) — `versioning.md`
+- [ ] **Rate Limiting** — token bucket, sliding window — `rate-limiting.md`
+- [ ] **Authentication** (API keys, OAuth2, JWT) vs. **Authorization** (RBAC, scopes) — `authn-authz.md`
+- [ ] OpenAPI/Swagger spec writing — `openapi.md`
+- [ ] gRPC + protobuf for internal service-to-service calls — `grpc-protobuf.md`
+- [ ] Error response conventions — `error-responses.md`
 - **Resources:** Stripe API docs (read as a reference implementation), Google API Design Guide (free), grpc.io docs
 
-### 7. Testing (P1)
-- [ ] Unit tests + mocking
-- [ ] Integration tests (Testcontainers)
-- [ ] Test pyramid concept (don't over-invest in E2E)
-- [ ] P2: contract testing (Pact)
+### 7. Testing (P1) — `tools/testing/` — Practice: [`practice-guide.md#testing`](practice-guide.md#testing)
+- [ ] Unit tests + mocking — `unit-testing-mocking.md`
+- [ ] Integration tests (Testcontainers) — `integration-testcontainers.md`
+- [ ] Test pyramid concept (don't over-invest in E2E) — `test-pyramid.md`
+- [ ] P2: contract testing (Pact) — `contract-testing.md`
 - **Resources:** Martin Fowler's testing blog, language-native frameworks (JUnit5, pytest, Jest, Go `testing`)
 
 ---
@@ -102,7 +104,7 @@ This deserves far more weight than the original generic "DBMS" entry — it's us
 ### 1. Framework Mastery (P0)
 Whichever stack you're actually shipping in — see Language-Specific Tracks below for Spring/NestJS/FastAPI/Go `net/http` detail.
 
-### 2. AuthN/AuthZ (P0)
+### 2. AuthN/AuthZ (P0) — Practice: [`practice-guide.md#authnauthz`](practice-guide.md#authnauthz)
 - [ ] Session-based vs. token-based auth
 - [ ] OAuth2 flows (Authorization Code, Client Credentials)
 - [ ] JWT structure & pitfalls (storage, revocation, expiry handling)
@@ -110,17 +112,17 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 - [ ] P2: SSO basics (SAML/OIDC)
 - **Resources:** oauth.net, Auth0's blog (good practical write-ups)
 
-### 3. Caching Strategies (P0)
+### 3. Caching Strategies (P0) — Practice: [`practice-guide.md#caching--background-jobs`](practice-guide.md#caching--background-jobs)
 - [ ] Cache-aside, write-through, write-behind patterns
 - [ ] Invalidation strategies (TTL vs. explicit invalidation — "cache invalidation is one of the two hard problems")
 - [ ] CDN basics
 
-### 4. Background Jobs / Async Processing (P1)
+### 4. Background Jobs / Async Processing (P1) — Practice: [`practice-guide.md#caching--background-jobs`](practice-guide.md#caching--background-jobs)
 - [ ] Job queues (Celery, BullMQ, Sidekiq-equivalents per stack)
 - [ ] Cron-based vs. event-triggered jobs
 - [ ] Idempotent job design, retries with exponential backoff
 
-### 5. Messaging & Kafka — `messaging/` (P0, **new, pulled out of Distributed Systems per request**)
+### 5. Messaging & Kafka — `messaging/` (P0, **new, pulled out of Distributed Systems per request**) — Practice: [`practice-guide.md#kafka--messaging`](practice-guide.md#kafka--messaging)
 - [ ] Why message queues exist (decoupling, buffering, backpressure)
 - [ ] Kafka core concepts: topics, partitions, offsets, consumer groups
 - [ ] Delivery guarantees: at-most-once, at-least-once, exactly-once
@@ -136,20 +138,20 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 
 ## Phase 3: Production Engineering
 
-### 1. Observability — `tools/observability/` (P0)
+### 1. Observability — `tools/observability/` (P0) — Practice: [`practice-guide.md#observability`](practice-guide.md#observability)
 - [ ] Structured logging (JSON logs, correlation/trace IDs)
 - [ ] Metrics — RED/USE methods, Prometheus + Grafana
 - [ ] Distributed tracing — OpenTelemetry, Jaeger
 - [ ] Alerting basics — SLOs, error budgets
 - **Resources:** Prometheus docs, Grafana docs, *Distributed Systems Observability* (free ebook, Cindy Sridharan)
 
-### 2. CI/CD — `tools/cicd/` (P0)
+### 2. CI/CD — `tools/cicd/` (P0) — Practice: [`practice-guide.md#cicd`](practice-guide.md#cicd)
 - [ ] Pipeline stages: build, test, deploy
 - [ ] GitHub Actions / GitLab CI fundamentals
 - [ ] Blue-green & canary deployments
 - [ ] Rollback strategies
 
-### 3. Cloud Fundamentals — `infrastructure/cloud-fundamentals/` (P0, AWS primary)
+### 3. Cloud Fundamentals — `infrastructure/cloud-fundamentals/` (P0, AWS primary) — Practice: [`practice-guide.md#cloud-aws`](practice-guide.md#cloud-aws)
 - [ ] Compute: EC2, Lambda
 - [ ] Storage: S3, EBS
 - [ ] Networking: VPC, Security Groups, Load Balancers
@@ -158,7 +160,7 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 - **Resources:** AWS official docs, freeCodeCamp's AWS courses
 - *If targeting FDE: this AWS-only scope is not enough — see Phase 6B for multi-cloud/on-prem.*
 
-### 4. Kubernetes — `infrastructure/orchestration/kubernetes/` (P1)
+### 4. Kubernetes — `infrastructure/orchestration/kubernetes/` (P1) — Practice: [`practice-guide.md#kubernetes`](practice-guide.md#kubernetes)
 - [ ] Pods, Deployments, Services, Ingress
 - [ ] ConfigMaps & Secrets
 - [ ] Resource requests/limits, HPA (autoscaling)
@@ -166,7 +168,7 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 - [ ] P2: Helm
 - **Resources:** kubernetes.io docs/tutorials, *Kubernetes Up & Running* (Burns et al.), killercoda.com interactive scenarios
 
-### 5. Infrastructure as Code — `infrastructure/iac/terraform/` (P1)
+### 5. Infrastructure as Code — `infrastructure/iac/terraform/` (P1) — Practice: [`practice-guide.md#terraform--iac`](practice-guide.md#terraform--iac)
 - [ ] Providers, resources, state management
 - [ ] Modules for reusability
 - [ ] Remote state & locking
@@ -185,13 +187,13 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 
 ## Phase 4: Architecture & Design
 
-### 1. Low-Level Design — `system-design/lld/` (P1)
+### 1. Low-Level Design — `system-design/lld/` (P1) — Practice: [`practice-guide.md#lld--design-patterns`](practice-guide.md#lld--design-patterns)
 - [x] SOLID principles, applied practically rather than academically — `best-practices/solid-principles.md`, `lld/all-things.md`
 - [ ] Patterns actually seen at work: Factory, Strategy, Observer, Decorator, Builder, Singleton (and its pitfalls)
 - [ ] Practice problems: parking lot, rate limiter, elevator system
 - **Resources:** refactoring.guru, *Head First Design Patterns*
 
-### 2. High-Level Design — `system-design/hld/` (P1)
+### 2. High-Level Design — `system-design/hld/` (P1) — Practice: [`practice-guide.md#hld--system-design`](practice-guide.md#hld--system-design)
 - [ ] Load balancing, caching layers, DB scaling (read replicas, sharding)
 - [ ] **Multi-region architecture** — active-active vs. active-passive, global load balancing, cross-region replication, latency-based routing
 - [ ] **Disaster Recovery** — RPO/RTO, backup strategies, failover/failback, disaster recovery drills
@@ -202,7 +204,7 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 - [ ] **System Design mocks** — practice with peers (Pramp, interviewing.io, Prepfully), target 8-10 mocks before real interviews
 - **Resources:** *System Design Interview* Vol. 1 & 2 (Alex Xu), ByteByteGo, System Design Newsletter
 
-### 3. Distributed Systems — `system-design/distributed-systems/` (P1, **new — the biggest missing piece**)
+### 3. Distributed Systems — `system-design/distributed-systems/` (P1, **new — the biggest missing piece**) — Practice: [`practice-guide.md#distributed-systems`](practice-guide.md#distributed-systems)
 - [ ] CAP theorem & PACELC
 - [ ] Consistency models — strong, eventual, causal
 - [ ] Replication — leader-follower, leaderless/quorum-based
@@ -223,7 +225,7 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 
 ## Phase 5: Foundations
 
-### 1. DSA — `dsa/` (interview-critical; run in parallel from Month 1, see pacing note above)
+### 1. DSA — `dsa/` (interview-critical; run in parallel from Month 1, see pacing note above) — Practice: [`practice-guide.md#dsa`](practice-guide.md#dsa)
 
 #### Fundamentals
 - [ ] **Arrays** — traversal, rotation, in-place manipulation, subarrays
@@ -268,13 +270,13 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 
 - **Resources:** NeetCode 150 (free, neetcode.io), *Elements of Programming Interviews* (language-specific edition), Striver's SDE Sheet, LeetCode Discuss
 
-### 2. Operating Systems — `cs-fundamentals/os/`
+### 2. Operating Systems — `cs-fundamentals/os/` — Practice: [`practice-guide.md#operating-systems`](practice-guide.md#operating-systems)
 - [x] Processes & threads, scheduling — `intro/virtualization-of-the-cpu.md`, `virtualization/intro/` (process abstraction, creation, data structures), `virtualization/process-api/` (fork, exec, wait, pipe)
 - [x] Memory management (paging, virtual memory) — `intro/virtualizing-memory.md`, `virtualization/intro-stack-head.md`
 - [x] Concurrency primitives (mutex, semaphore, deadlock conditions) — `intro/concurrency.md`
 - **Resources:** *OSTEP — Operating Systems: Three Easy Pieces* (free, ostep.org)
 
-### 3. Computer Networks — `cs-fundamentals/cn/`
+### 3. Computer Networks — `cs-fundamentals/cn/` — Practice: [`practice-guide.md#computer-networks`](practice-guide.md#computer-networks)
 - [ ] TCP/IP, the TCP handshake, TCP vs. UDP
 - [ ] HTTP/HTTPS, HTTP/2, TLS handshake basics
 - [ ] DNS resolution flow
@@ -293,7 +295,7 @@ Whichever stack you're actually shipping in — see Language-Specific Tracks bel
 
 This is what's *not* in a normal backend/cloud SDE plan but is core to FDE work. The role's defining trait is: arbitrary client environment + messy client data + tight timeline + you're the one translating "what they need" into "what's running." That shows up as heavier data engineering, infra that isn't just AWS, integration with systems you don't control, and — increasingly — AI/LLM deployment work. The closing section (G) is the one skill on this entire roadmap that genuinely can't be learned from a resource list.
 
-### A. Data Engineering — `data-engineering/` (P0 — often the actual majority of FDE work)
+### A. Data Engineering — `data-engineering/` (P0 — often the actual majority of FDE work) — Practice: [`practice-guide.md#data-engineering-spark-airflow-dbt-warehouses`](practice-guide.md#data-engineering-spark-airflow-dbt-warehouses)
 - [ ] **ETL vs. ELT** — batch vs. streaming, when each fits
 - [ ] **Apache Spark / PySpark** — DataFrames, partitioning, common performance pitfalls (shuffles, skew)
 - [ ] **Orchestration — Apache Airflow** — DAGs, scheduling, retries, sensors
@@ -305,7 +307,7 @@ This is what's *not* in a normal backend/cloud SDE plan but is core to FDE work.
 - [ ] P2: streaming data processing — Kafka Streams, Spark Structured Streaming, Flink
 - **Resources:** *Fundamentals of Data Engineering* (Reis & Housley) — best modern overview of the whole space, Airflow official docs, dbt Learn (free, learn.getdbt.com), Databricks Academy (free Spark courses)
 
-### B. Multi-Cloud & On-Prem / Hybrid Deployment — `infrastructure/multi-cloud/` (P0 — the single biggest differentiator vs. a normal backend SDE)
+### B. Multi-Cloud & On-Prem / Hybrid Deployment — `infrastructure/multi-cloud/` (P0 — the single biggest differentiator vs. a normal backend SDE) — Practice: [`practice-guide.md#multi-cloud--on-prem`](practice-guide.md#multi-cloud--on-prem)
 - [ ] Don't stop at AWS — get conversational in **Azure** and **GCP** equivalents (compute, storage, IAM concepts map across all three; learn the mapping, not three separate stacks from scratch)
 - [ ] On-prem Kubernetes distributions — **OpenShift**, Rancher, bare-metal K8s via `kubeadm`
 - [ ] **Air-gapped / disconnected deployment** patterns — offline package mirrors, private image registries with no internet egress (extremely common in defense/gov/finance client environments)
@@ -313,14 +315,14 @@ This is what's *not* in a normal backend/cloud SDE plan but is core to FDE work.
 - [ ] VPNs, on-prem-to-cloud connectivity, proxy configuration, operating behind client firewalls
 - **Resources:** Azure/GCP free-tier docs (just enough to map AWS concepts across, not full certs), OpenShift docs, *Kubernetes Patterns* (O'Reilly)
 
-### C. Enterprise Integration & Identity — `integration/` (P0/P1)
+### C. Enterprise Integration & Identity — `integration/` (P0/P1) — Practice: [`practice-guide.md#enterprise-integration--identity`](practice-guide.md#enterprise-integration--identity)
 - [ ] **SSO protocols** — SAML, LDAP/Active Directory, OIDC — almost every enterprise client gates access behind one of these
 - [ ] Legacy system integration patterns — SOAP, flat-file/SFTP handoffs (still extremely common in enterprise and government, however dated it sounds)
 - [ ] Middleware/ESB concepts, webhook design
 - [ ] Working with undocumented or inconsistent client APIs — defensive parsing, handling schema drift gracefully
 - **Resources:** Auth0/Okta engineering blogs on SSO protocols, *Enterprise Integration Patterns* (Hohpe & Woolf)
 
-### D. AI/LLM Integration — `ai-integration/` (P0 — central to most FDE roles as of 2026)
+### D. AI/LLM Integration — `ai-integration/` (P0 — central to most FDE roles as of 2026) — Practice: [`practice-guide.md#ai--llm`](practice-guide.md#ai--llm)
 
 #### Python — `languages/python/`
 - [ ] Python ecosystem for AI/ML — NumPy, pandas, scikit-learn basics

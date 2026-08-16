@@ -26,6 +26,7 @@ All aliases are in `~/.config/zsh/.zsh_aliases`, sourced from `.zshrc` via:
 |---|---|---|
 | `oc` | `opencode` | start opencode |
 | `occ` | `opencode --continue` | continue last opencode session |
+| `batt` | `function batt()` | battery health & status summary via sysfs — status, current %, health % (capacity vs design), cycle count, voltage — Linux only |
 | `gcb` | `git checkout $(git branch \| fzf)` | fuzzy-pick a branch to check out |
 | `y` | `yazi` | open yazi, stay in the current directory on quit (plain alias) |
 | `yy` | `function yy()` | open yazi, then `cd` to the last directory on quit (function — an alias can't run code after the program exits) |

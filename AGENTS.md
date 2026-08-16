@@ -58,11 +58,10 @@ This repository tracks my journey to become a **Forward Deployed Engineer (FDE) 
 
 ## Current Topic
 
-**Phase 1.2 — Linux & Shell: Process management** (sub-topic of first checkbox)
-- Status: **in progress**
-- Notes created: `ownership-permissions.md`, `user-groups-permissions.md`, `find/find-exec.md`
-- Waiting on: `process-management/process-management.md` (commands: `ps`, `killall`, `top`, `bg`, `jobs`, `fg`, `kill`, `shutdown`)
-- Next after this: `filesystem-navigation.md`, then grep/sed/awk for log parsing
+**Phase 1.1 — Git: GitHub Workflow** (first unchecked topic in the sequence)
+- Status: **notes ready, not yet studied** (`github-workflow.md` created)
+- Full Phase 1 remaining: Git (`github-workflow.md`, `submodules-worktrees.md`), Databases (`sql-mastery.md`, `indexes.md`, `transactions-isolation.md`, `locks-deadlocks.md`, `redis.md`, `data-modeling.md`, `postgresql-internals.md`), Docker (`images-containers-dockerfile.md`, `docker-compose.md`, `volumes-networking.md`, `debugging-containers.md`, `image-optimization-security.md`), API Design (`api-design/*`), Testing (`tools/testing/*`)
+- Practice for every topic lives in `learning-process/practice-guide.md` (cross-linked to LEARNING_PATH.md)
 
 ---
 
@@ -93,6 +92,7 @@ When I ask "what should I study today?", "what is next?", "what's next?", "what 
   - **What** to study (specific topic and sub-topics)
   - **Where** to create the notes file (exact directory path)
   - **Sources** from the resources listed in the learning path
+  - **Practice** — the matching hands-on drills for that same topic from `learning-process/practice-guide.md` (cross-link map + section), so I get both the theory AND the playground/lab/online course for it in one answer.
 - Factor in the parallel tracks (DSA problems 3–4/week, Japanese study daily).
 
 ### 4. Marking Topics as Done

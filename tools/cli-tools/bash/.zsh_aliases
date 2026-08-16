@@ -38,6 +38,49 @@ alias .5='cd ../../../../..'
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
+# batt — battery health & status summary. Reads sysfs (Linux).
+#   Health %  = current max capacity vs design capacity -> how much the battery
+#               has worn down over time. A plain alias can't compute the ratio,
+#               so this is a function.
+#   Cycles    = full discharge/recharge cycles (wear is mostly per-cycle).
+#   Voltage   = drops as the battery ages (can't hold the full-charge voltage).
+# Batteries may report energy (Wh) or charge (mAh); both schemes are handled.
+function batt() {
+	local bat d full design unit full_show design_show
+	local state cap tech make model cycles volts
+	bat=
+	for d in /sys/class/power_supply/BAT*; do
+		[ -e "$d" ] || continue
+		bat="$d"
+		break
+	done
+	[ -n "$bat" ] || { echo "batt: no battery found" >&2; return 1; }
+	# kernel reports micro-units (µAh / µWh); divide by 1000 for mAh / mWh
+	if [ -f "$bat/energy_full" ]; then
+		full=$(cat "$bat/energy_full")
+		design=$(cat "$bat/energy_full_design")
+		unit="mWh"
+	else
+		full=$(cat "$bat/charge_full")
+		design=$(cat "$bat/charge_full_design")
+		unit="mAh"
+	fi
+	full_show=$(( full / 1000 ))
+	design_show=$(( design / 1000 ))
+	state=$(cat "$bat/status" 2>/dev/null)
+	cap=$(cat "$bat/capacity" 2>/dev/null)
+	tech=$(cat "$bat/technology" 2>/dev/null)
+	make=$(cat "$bat/manufacturer" 2>/dev/null)
+	model=$(cat "$bat/model_name" 2>/dev/null)
+	cycles=$(cat "$bat/cycle_count" 2>/dev/null)
+	volts=$(cat "$bat/voltage_now" 2>/dev/null)
+	echo "Battery: ${make:-unknown} ${model:-unknown} (${tech:-unknown})"
+	echo "Status:  ${state:-unknown}${cap:+ — ${cap}%}"
+	echo "Health:  $(( full * 100 / design ))% — ${full_show}/${design_show} ${unit} of design capacity"
+	echo "Cycles:  ${cycles:-not reported}"
+	echo "Voltage: $(( volts / 1000000 )).$(( (volts % 1000000) / 100000 )) V"
+}
+
 # git — checkout branch via fzf
 alias gcb='git checkout $(git branch | fzf)'
 
