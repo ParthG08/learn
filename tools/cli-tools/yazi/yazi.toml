@@ -1,4 +1,7 @@
 [opener]
+nvim = [
+    { run = 'nvim "$@"', block = true, for = "unix" }
+]
 zathura = [
     { run = "zathura %s1", orphan = true, for = "unix" }
 ]
@@ -9,5 +12,6 @@ glow = [
 [open]
 prepend_rules = [
     { mime = "application/pdf", use = "zathura" },
-    { url = "*.md", use = "glow" }
+    { url = "*.md", use = "glow" },
+    { mime = "text/*", use = "nvim" }
 ]

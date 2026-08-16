@@ -27,6 +27,8 @@ All aliases are in `~/.config/zsh/.zsh_aliases`, sourced from `.zshrc` via:
 | `oc` | `opencode` | start opencode |
 | `occ` | `opencode --continue` | continue last opencode session |
 | `gcb` | `git checkout $(git branch \| fzf)` | fuzzy-pick a branch to check out |
+| `y` | `yazi` | open yazi, stay in the current directory on quit (plain alias) |
+| `yy` | `function yy()` | open yazi, then `cd` to the last directory on quit (function — an alias can't run code after the program exits) |
 
 ### Adding a new alias
 
@@ -43,3 +45,8 @@ type gcb          # "gcb is an alias for git checkout $(git branch | fzf)"
 ## Why gcb
 
 `git branch | fzf` gives an interactive list of branches to pick from, then checks it out — no need to type or remember branch names. Requires `fzf` (see `fzf/setup.md`).
+
+## Why y vs yy
+
+- `y` is a plain alias for `yazi` — good when you just want to browse without changing the shell's directory.
+- `yy` is a function: it writes the last browsed directory to a temp file via `--cwd-file`, then `cd`s into it on quit. A plain alias can't do this (the `cd` must run *after* yazi exits), so it needs a function. Works only when yazi is quit with `q`, not `<C-c>`. See the full function in `.zsh_aliases`.

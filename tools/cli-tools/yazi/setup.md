@@ -122,6 +122,36 @@ Matching on the filename glob `*.md` is reliable. The rule field is `url` — a
   so the preview flashes open and closes.
 - Other tools (man pages, `git diff`, etc.) also prefer `less` — same exports fix them.
 
+## Open text files with nvim (default text editor)
+
+Pressing Enter on any text file (configs, `.zsh_aliases`, source code, logs)
+opens it in nvim instead of the system opener. This is a catch-all rule based
+on mime type, so it covers dotfiles like `.zsh_aliases` that no other rule
+matches:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[opener]
+nvim = [
+  { run = 'nvim "$@"', block = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+  { mime = "application/pdf", use = "zathura" },
+  { url = "*.md", use = "glow" },
+  { mime = "text/*", use = "nvim" },
+]
+```
+
+- `block = true` — yazi waits for nvim to close before returning (terminal
+  editor, must block).
+- `text/*` matches every `text/plain`, `text/x-shellscript`, etc. mime subtype.
+- Rule order matters: PDFs and markdown are matched **before** `text/*`, so
+  they keep going to zathura/glow. `*.md` files report as `text/plain` (see
+  glow section below), so the `.md` glob rule must stay above `text/*` or glow
+  would be shadowed.
+
 ## Verify
 
 ```bash
