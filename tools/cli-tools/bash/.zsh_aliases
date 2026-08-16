@@ -84,6 +84,9 @@ function batt() {
 # git — checkout branch via fzf
 alias gcb='git checkout $(git branch | fzf)'
 
+# git — checkout the last branch you were on
+alias 'gc-'='git checkout -'
+
 # git — pull another branch (fuzzy-picked) without rebase
 alias pab='git pull origin $(git branch | fzf) --no-rebase'
 
@@ -118,22 +121,29 @@ function yy() {
 #   cclip git branch       -> copy the output of `git branch`
 #   cclip "some text"      -> copy literal text (first arg is not a command)
 #   echo hi | cclip        -> copy stdin
+# Trailing newline(s) are stripped before copying (perl slurp mode), so
+# pasting e.g. `echo hi` / `git branch` / `pwd` output doesn't add a blank
+# line. xclip/wl-copy/pbcopy all copy stdin verbatim — the strip must happen
+# here, not in the clipboard tool. See cclip/setup.md for per-platform deps.
 # Cross-platform: auto-detects wl-copy (Wayland), xclip (X11), or pbcopy
-# (macOS). See cclip/setup.md for dependency install per platform.
+# (macOS).
 function cclip() {
-	if [ $# -eq 0 ]; then
-		if command -v wl-copy >/dev/null 2>&1; then
-			wl-copy
-		elif command -v xclip >/dev/null 2>&1; then
-			xclip -selection clipboard
-		elif command -v pbcopy >/dev/null 2>&1; then
-			pbcopy
-		else
-			echo "cclip: no clipboard tool found (install wl-clipboard or xclip on Linux; pbcopy is built into macOS)" >&2
-		fi
-	elif command -v "$1" >/dev/null 2>&1; then
-		printf '%s' "$("$@")" | cclip
+	local backend
+	if command -v wl-copy >/dev/null 2>&1; then
+		backend=(wl-copy)
+	elif command -v xclip >/dev/null 2>&1; then
+		backend=(xclip -selection clipboard)
+	elif command -v pbcopy >/dev/null 2>&1; then
+		backend=(pbcopy)
 	else
-		printf '%s' "$*" | cclip
+		echo "cclip: no clipboard tool found (install wl-clipboard or xclip on Linux; pbcopy is built into macOS)" >&2
+		return 1
+	fi
+	if [ $# -eq 0 ]; then
+		perl -0777 -pe 's/\n+\z//' | "${backend[@]}"
+	elif command -v "$1" >/dev/null 2>&1; then
+		"$@" | perl -0777 -pe 's/\n+\z//' | "${backend[@]}"
+	else
+		printf '%s' "$*" | "${backend[@]}"
 	fi
 }
