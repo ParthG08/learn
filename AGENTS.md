@@ -158,6 +158,24 @@ to reconcile, and note which file was the intended source.
 
 ---
 
+## Job Search Pipeline (`job-alerts`)
+
+The ATS-first job discovery tool is **live** in the separate private repo
+[`ParthG08/job-alerts`](https://github.com/ParthG08/job-alerts) (not inside
+this repo). It polls 25 target companies' ATS boards (Greenhouse, Lever,
+Ashby, SmartRecruiters, Workday, custom-site fallback) on a GitHub Actions
+cron every 4h and alerts the Telegram bot `@parth_job_alert_bot`.
+
+- **Source of truth for targets/profile:** `tools/job-search/companies.json`
+  here → mirror edits to `job-alerts/config/companies.json` and push both.
+- **Design/decisions:** `tools/job-search/setup.md` (incl. verified platforms,
+  known Workday quirks, and known broken targets like Icertis/Darwinbox).
+- The cron runs on GitHub's servers — it works with the laptop off.
+- Secrets live in the `job-alerts` repo's Actions secrets, never in either
+  repo's files.
+
+---
+
 ## Notes File Conventions
 
 - Notes are Markdown (`.md`) files inside the topic's directory.
