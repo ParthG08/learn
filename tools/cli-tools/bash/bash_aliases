@@ -9,6 +9,12 @@ alias occ="opencode --continue"
 # git — checkout branch via fzf
 alias gcb='git checkout $(git branch | fzf)'
 
+# git — pull another branch (fuzzy-picked) without rebase
+alias pab='git pull origin $(git branch | fzf) --no-rebase'
+
+# git — push to origin on the current branch
+alias gpo='git push origin $(git cb)'
+
 # git — update current branch (or a given branch: ucb <branch>)
 function ucb() {
     if [ -n "$1" ]; then

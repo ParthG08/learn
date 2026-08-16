@@ -27,6 +27,8 @@ All aliases are in `~/.config/zsh/.zsh_aliases`, sourced from `.zshrc` via:
 | `oc` | `opencode` | start opencode |
 | `occ` | `opencode --continue` | continue last opencode session |
 | `gcb` | `git checkout $(git branch \| fzf)` | fuzzy-pick a branch to check out |
+| `pab` | `git pull origin $(git branch \| fzf) --no-rebase` | pull another (fuzzy-picked) branch without rebase |
+| `gpo` | `git push origin $(git cb)` | push current branch to origin |
 
 ### Adding a new alias
 
