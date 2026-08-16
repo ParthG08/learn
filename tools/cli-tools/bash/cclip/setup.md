@@ -23,6 +23,20 @@ That last rule is what makes `cclip $(git branch)` work: the shell expands
 `$(git branch)` to a string, `git branch` is not the first arg, so cclip just
 copies the text.
 
+## Trailing newline stripping
+
+Every path pipes the content through `perl -0777 -pe 's/\n+\z//'` before it
+reaches the clipboard tool, so a trailing `\n` (or several) never lands on your
+clipboard. Without this, `cclip echo hi` / `echo hi | cclip` copies `hi\n`, and
+pasting adds a blank line — annoying when you `cclip git branch` and paste into
+a chat or PR.
+
+`wl-copy`, `xclip`, and `pbcopy` all copy stdin **verbatim** — none of them
+strip newlines — so the strip must happen in cclip itself. This applies on
+Linux/X11 too: `xclip` happily copies `hello\n` and pastes it back with the
+newline. `perl` (required here) ships by default on macOS and essentially
+every Linux distro.
+
 ## Prerequisites (one clipboard backend per platform)
 
 cclip auto-detects in this order: `wl-copy` → `xclip` → `pbcopy`.
@@ -52,11 +66,12 @@ Check: `command -v wl-copy` → `/usr/bin/wl-copy` (or whichever backend).
 | File | Purpose |
 |---|---|
 | `~/.config/zsh/.zsh_aliases` | Live definition (zsh, sourced from `$ZDOTDIR/.zshrc`) |
+| `~/.zshrc` | Live definition on macOS (this machine — cclip lives in `.zshrc`) |
 | `~/.bash_aliases` | Live definition (bash, sourced from `~/.bashrc`) |
 | `tools/cli-tools/bash/.zsh_aliases` | Repo replica / reference copy (source of truth) |
 | `tools/cli-tools/bash/bash_aliases` | Repo replica / reference copy (bash flavor) |
 
-The function body is identical in all four files — keep them in sync.
+The function body is identical in all five files — keep them in sync.
 
 ## Verify
 

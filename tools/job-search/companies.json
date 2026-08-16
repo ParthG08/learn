@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "status": "draft",
+  "note": "Platforms verified against live ATS APIs on 2026-08-17. `verify: true` = still needs manual confirmation. Workday entries use full host + site (cannot be guessed).",
+  "profile": {
+    "title": "Backend Engineer",
+    "skills": ["go", "golang", "python", "java", "sql", "postgres", "mysql", "redis", "kafka", "docker", "kubernetes", "aws", "gcp", "terraform", "grpc"],
+    "locations": ["Bengaluru", "Bangalore", "Hyderabad", "Remote", "Pune", "Gurugram", "Gurgaon", "Noida", "Chennai", "Mumbai"],
+    "exclude_keywords": ["manager", "director", "principal", "staff", "10+ years", "15+ years"],
+    "min_skill_hits": 1
+  },
+  "alerts": {
+    "channel": "telegram / slack (via env vars)",
+    "env_keys": ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "SLACK_WEBHOOK_URL"]
+  },
+  "companies": [
+    { "name": "Postman", "platform": "greenhouse", "identifier": "postman", "verified": 109 },
+    { "name": "InMobi", "platform": "greenhouse", "identifier": "inmobi", "verified": 68 },
+    { "name": "PhonePe", "platform": "greenhouse", "identifier": "phonepe", "verified": 76 },
+    { "name": "Razorpay", "platform": "greenhouse", "identifier": "razorpaysoftwareprivatelimited", "verified": true },
+    { "name": "HighRadius", "platform": "greenhouse", "identifier": "highradius", "verified": 76 },
+    { "name": "Zeta", "platform": "lever", "identifier": "zeta", "verified": 3 },
+    { "name": "Signoz", "platform": "ashby", "identifier": "signoz", "verified": 16 },
+    { "name": "Freshworks", "platform": "smartrecruiters", "identifier": "freshworks", "verified": 153 },
+    { "name": "ServiceNow", "platform": "smartrecruiters", "identifier": "servicenow", "verified": 482 },
+    { "name": "Swiggy", "platform": "smartrecruiters", "identifier": "swiggy", "verified": 46 },
+    { "name": "Whatfix", "platform": "smartrecruiters", "identifier": "whatfix", "verified": 1 },
+    { "name": "Salesforce", "platform": "workday", "identifier": "salesforce", "host": "salesforce.wd12.myworkdayjobs.com", "site": "External_Career_Site", "verified": 1515 },
+    { "name": "Sprinklr", "platform": "workday", "identifier": "sprinklr", "host": "sprinklr.wd1.myworkdayjobs.com", "site": "careers", "verified": 88 },
+    { "name": "BrowserStack", "platform": "workday", "identifier": "browserstack", "host": "browserstack.wd3.myworkdayjobs.com", "site": "External", "verified": 34 },
+    { "name": "Darwinbox", "platform": "custom", "identifier": "https://darwinbox.com/careers", "verify": true },
+    { "name": "Cisco", "platform": "custom", "identifier": "https://careers.cisco.com/global/en", "verify": true },
+    { "name": "Hasura", "platform": "custom", "identifier": "https://jobs.gem.com/promptql", "verify": true },
+    { "name": "Juspay", "platform": "custom", "identifier": "https://juspay.io/careers", "verify": true },
+    { "name": "Icertis", "platform": "custom", "identifier": "https://www.icertis.com/careers/", "verify": true },
+    { "name": "Chargebee", "platform": "custom", "identifier": "https://www.chargebee.com/careers/", "verify": true },
+    { "name": "CleverTap", "platform": "custom", "identifier": "https://clevertap.com/careers/", "verify": true },
+    { "name": "MoEngage", "platform": "custom", "identifier": "https://www.moengage.com/careers/", "verify": true },
+    { "name": "Zepto", "platform": "custom", "identifier": "https://www.zeptonow.com/careers", "verify": true },
+    { "name": "Amazon", "platform": "custom", "identifier": "https://www.amazon.jobs/", "verify": true },
+    { "name": "Microsoft", "platform": "custom", "identifier": "https://careers.microsoft.com/", "verify": true }
+  ]
+}

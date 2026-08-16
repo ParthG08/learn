@@ -28,6 +28,12 @@ All aliases are in `~/.config/zsh/.zsh_aliases`, sourced from `.zshrc` via:
 | `occ` | `opencode --continue` | continue last opencode session |
 | `batt` | `function batt()` | battery health & status summary via sysfs — status, current %, health % (capacity vs design), cycle count, voltage — Linux only |
 | `gcb` | `git checkout $(git branch \| fzf)` | fuzzy-pick a branch to check out |
+| `gc-` | `git checkout -` | switch back to the last branch you were on |
+| `pab` | `git pull origin $(git branch \| fzf) --no-rebase` | pull another (fuzzy-picked) branch without rebase |
+| `gpo` | `git push origin $(git cb)` | push current branch to origin |
+| `cclip` | shell function (see `cclip/setup.md`) | copy command output/stdin to clipboard — trailing newline stripped |
+||||||| 6b3c5f4
+=======
 | `y` | `yazi` | open yazi, stay in the current directory on quit (plain alias) |
 | `yy` | `function yy()` | open yazi, then `cd` to the last directory on quit (function — an alias can't run code after the program exits) |
 
