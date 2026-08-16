@@ -1,9 +1,85 @@
-# User aliases — reference copy kept in the learn repo.
-# Actual live file: ~/.config/zsh/.zsh_aliases (sourced from $ZDOTDIR/.zshrc)
+# User aliases — sourced from $ZDOTDIR/.zshrc
+# This file lives in the zsh config dir (~/.config/zsh/.zsh_aliases)
+# Repo mirror: tools/cli-tools/bash/.zsh_aliases
+
+# pager — must be `less`, NOT `more`. glow's pager mode (`glow -p`, used by
+# yazi for .md preview) renders ANSI colors cleanly through less; through more
+# the output is garbled with huge gaps. Arch needs `sudo pacman -S less`.
+export PAGER=less
+export LESS="-R"
 
 # opencode
 alias oc="opencode"
 alias occ="opencode --continue"
+
+# Helpful aliases
+alias c='clear'                                                        # clear terminal
+alias l='eza -lh --icons=auto'                                         # long list
+alias ls='eza -1 --icons=auto'                                         # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as tree
+alias un='__package_manager remove'                                    # uninstall package
+alias up='__package_manager upgrade'                                   # update system/package/aur
+alias pl='__package_manager search installed'                          # list installed package
+alias pa='__package_manager search all'                                # list available package
+alias pc='yay -Sc'                                                        # remove unused cache
+alias po='yay -Qtdq | yay -Rns -'                                        # remove unused packages
+alias vc='code'                                                        # gui code editor
+alias fastfetch='fastfetch --logo-type kitty'
+
+# Directory navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
+# batt — battery health & status summary. Reads sysfs (Linux).
+#   Health %  = current max capacity vs design capacity -> how much the battery
+#               has worn down over time. A plain alias can't compute the ratio,
+#               so this is a function.
+#   Cycles    = full discharge/recharge cycles (wear is mostly per-cycle).
+#   Voltage   = drops as the battery ages (can't hold the full-charge voltage).
+# Batteries may report energy (Wh) or charge (mAh); both schemes are handled.
+function batt() {
+	local bat d full design unit full_show design_show
+	local state cap tech make model cycles volts
+	bat=
+	for d in /sys/class/power_supply/BAT*; do
+		[ -e "$d" ] || continue
+		bat="$d"
+		break
+	done
+	[ -n "$bat" ] || { echo "batt: no battery found" >&2; return 1; }
+	# kernel reports micro-units (µAh / µWh); divide by 1000 for mAh / mWh
+	if [ -f "$bat/energy_full" ]; then
+		full=$(cat "$bat/energy_full")
+		design=$(cat "$bat/energy_full_design")
+		unit="mWh"
+	else
+		full=$(cat "$bat/charge_full")
+		design=$(cat "$bat/charge_full_design")
+		unit="mAh"
+	fi
+	full_show=$(( full / 1000 ))
+	design_show=$(( design / 1000 ))
+	state=$(cat "$bat/status" 2>/dev/null)
+	cap=$(cat "$bat/capacity" 2>/dev/null)
+	tech=$(cat "$bat/technology" 2>/dev/null)
+	make=$(cat "$bat/manufacturer" 2>/dev/null)
+	model=$(cat "$bat/model_name" 2>/dev/null)
+	cycles=$(cat "$bat/cycle_count" 2>/dev/null)
+	volts=$(cat "$bat/voltage_now" 2>/dev/null)
+	echo "Battery: ${make:-unknown} ${model:-unknown} (${tech:-unknown})"
+	echo "Status:  ${state:-unknown}${cap:+ — ${cap}%}"
+	echo "Health:  $(( full * 100 / design ))% — ${full_show}/${design_show} ${unit} of design capacity"
+	echo "Cycles:  ${cycles:-not reported}"
+	echo "Voltage: $(( volts / 1000000 )).$(( (volts % 1000000) / 100000 )) V"
+}
 
 # git — checkout branch via fzf
 alias gcb='git checkout $(git branch | fzf)'
@@ -23,13 +99,41 @@ function ucb() {
     fi
 }
 
-# yazi — open yazi, cd to the last directory on quit (a plain alias can't run
+# yazi — plain open, no cd (just browse)
+alias y='yazi'
+
+# yy — open yazi, cd to the last directory on quit (a plain alias can't run
 # code after the program exits, so this is a function)
-function y() {
+function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+# cclip — copy the output of a command (or piped input) to the clipboard.
+#   cclip pwd              -> copy the current directory
+#   cclip git branch       -> copy the output of `git branch`
+#   cclip "some text"      -> copy literal text (first arg is not a command)
+#   echo hi | cclip        -> copy stdin
+# Cross-platform: auto-detects wl-copy (Wayland), xclip (X11), or pbcopy
+# (macOS). See cclip/setup.md for dependency install per platform.
+function cclip() {
+	if [ $# -eq 0 ]; then
+		if command -v wl-copy >/dev/null 2>&1; then
+			wl-copy
+		elif command -v xclip >/dev/null 2>&1; then
+			xclip -selection clipboard
+		elif command -v pbcopy >/dev/null 2>&1; then
+			pbcopy
+		else
+			echo "cclip: no clipboard tool found (install wl-clipboard or xclip on Linux; pbcopy is built into macOS)" >&2
+		fi
+	elif command -v "$1" >/dev/null 2>&1; then
+		printf '%s' "$("$@")" | cclip
+	else
+		printf '%s' "$*" | cclip
+	fi
 }

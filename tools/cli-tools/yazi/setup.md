@@ -13,6 +13,26 @@ sudo apt install yazi
 brew install yazi
 ```
 
+## glow — markdown renderer
+
+glow renders `.md` files inside yazi. Install via the package manager:
+
+```bash
+sudo pacman -S glow        # Arch
+brew install glow          # macOS
+```
+
+Or as a user-level binary (no sudo, installed to `~/.local/bin` on this
+machine):
+
+```bash
+curl -sL https://github.com/charmbracelet/glow/releases/latest/download/glow_Linux_x86_64.tar.gz -o /tmp/glow.tar.gz
+tar -xzf /tmp/glow.tar.gz -C /tmp && cp /tmp/glow_*_Linux_x86_64/glow ~/.local/bin/
+chmod +x ~/.local/bin/glow
+```
+
+Requires `~/.local/bin` on `PATH` (it is on this machine).
+
 ## Shell Function (`y`)
 
 `y` opens yazi **and** cds into the directory you ended in when you quit.
@@ -67,6 +87,70 @@ prepend_rules = [
 
 - `orphan = true` — detaches zathura from yazi so it keeps running when yazi closes
 - `prepend_rules` — checked before the default rules, so PDFs go straight to zathura
+
+## Markdown preview with glow (critical: needs `less`)
+
+Opening `.md` files in yazi renders them via `glow` in pager mode:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[opener]
+glow = [
+  { run = 'glow -p "$1"', block = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+  { url = "*.md", use = "glow" },
+]
+```
+
+**Why `url = "*.md"` and not `mime = "text/markdown"`:** `file` reports `.md`
+files as `text/plain` (no system markdown mime mapping), so a mime-based rule
+never matches and yazi falls back to a broken default opener (exit 127).
+Matching on the filename glob `*.md` is reliable. The rule field is `url` — a
+`name` field doesn't exist and causes a TOML validation error.
+
+**Requirement — `less` must be installed and be the pager:**
+- Install: `sudo pacman -S less` (Arch). Without it, `glow -p` falls back to
+  `$PAGER`, and if that is `more`, the colored output renders garbled with big
+  gaps and truncated lines (`--More--` prompt is the tell-tale sign).
+- Ensure `export PAGER=less` in your shell aliases (`tools/cli-tools/bash/bash_aliases`).
+- `export LESS="-R"` so less passes glow's ANSI color codes through (raw
+  control chars) instead of printing them literally.
+- Keep the `-p` flag: without it glow prints to stdout and exits immediately,
+  so the preview flashes open and closes.
+- Other tools (man pages, `git diff`, etc.) also prefer `less` — same exports fix them.
+
+## Open text files with nvim (default text editor)
+
+Pressing Enter on any text file (configs, `.zsh_aliases`, source code, logs)
+opens it in nvim instead of the system opener. This is a catch-all rule based
+on mime type, so it covers dotfiles like `.zsh_aliases` that no other rule
+matches:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[opener]
+nvim = [
+  { run = 'nvim "$@"', block = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+  { mime = "application/pdf", use = "zathura" },
+  { url = "*.md", use = "glow" },
+  { mime = "text/*", use = "nvim" },
+]
+```
+
+- `block = true` — yazi waits for nvim to close before returning (terminal
+  editor, must block).
+- `text/*` matches every `text/plain`, `text/x-shellscript`, etc. mime subtype.
+- Rule order matters: PDFs and markdown are matched **before** `text/*`, so
+  they keep going to zathura/glow. `*.md` files report as `text/plain` (see
+  glow section below), so the `.md` glob rule must stay above `text/*` or glow
+  would be shadowed.
 
 ## Verify
 

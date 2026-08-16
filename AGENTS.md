@@ -4,7 +4,44 @@
 
 - **Never make changes outside the learn repo** (e.g., `~/.zshrc`, `~/.zsh_aliases`, `~/.bash_aliases`, home-dir configs).
 - If a task truly requires touching a file outside the repo, **ask the user once first** before doing it.
-- Shell config files live in the repo under `dotfiles/` (e.g., `dotfiles/zsh_aliases`, `dotfiles/bash_aliases`). These are the source of truth — edit them here, not the home-dir copies.
+- Shell config files are maintained **in this repo** as replicas under `tools/cli-tools/bash/` (`.zsh_aliases`, `bash_aliases`). These replicas are the source of truth — edit them here, then sync to the home-dir copies (see "Work Environment Replica" below).
+- **Record every system setting change in the repo:** whenever the user changes (or asks you to change) any system-level setting — PAM/faillock, sudoers, bootloader, display manager, firewall, etc. — save the change in the repo too, as a replica file, a `setup.md` section, or a note, so a new machine can be reproduced and the change is never lost.
+
+## Work Environment Replica (dotfiles & setup)
+
+**Vision:** this repo is a portable replica of the user's working setup
+environment (shell configs, aliases, per-tool setup guides, tmux/nvim configs)
+so a brand-new machine — Linux or macOS — can be reproduced reliably. Replicas
+in the repo are the source of truth; home-dir copies get synced from them.
+
+- **Replica locations:**
+  - zsh aliases: `tools/cli-tools/bash/.zsh_aliases` → live `~/.config/zsh/.zsh_aliases`
+  - bash aliases: `tools/cli-tools/bash/bash_aliases` → live `~/.bash_aliases`
+  - shell setup guide: `tools/cli-tools/bash/setup.md` (also `fzf/setup.md`, `zoxide/setup.md`, `cclip/setup.md`, ...)
+  - tmux: `tools/cli-tools/tmux/tmux.conf` → `~/.config/tmux/tmux.conf` (+ `tmux-window-fzf` → `~/.local/bin/`, guide `setup.md`)
+  - nvim: `tools/cli-tools/nvim/.config/` → `~/.config/nvim/` (guide `setup.md`)
+  - yazi: `tools/cli-tools/yazi/{yazi.toml,keymap.toml}` → `~/.config/yazi/` (guide `setup.md`)
+  - git: `tools/cli-tools/git/setup.md` (global alias `git cb`)
+  - zathura: `tools/cli-tools/zathura/setup.md` (default PDF viewer)
+- **Sync rule:** keep each replica in sync with its live copy. Edit the replica
+  first, then copy to the live file (remember the outside-repo change policy —
+  ask first). Confirm with `diff` and a `source` + functional test.
+- **Cross-platform rule:** functions/aliases meant for both Linux and macOS
+  must auto-detect the platform backend at runtime (e.g. `cclip` uses
+  `wl-copy` → `xclip` → `pbcopy`). Never hard-code one platform.
+- **Every tool gets a `setup.md`** with install commands per platform
+  (Arch/Ubuntu/Fedora/macOS), wire-up steps, and verify steps — written so a
+  future automated script can consume them directly.
+- **System-level settings also get recorded** (see policy above): e.g. the
+  hyprlock/faillock lockout fix lives in `tools/hyprland/setup.md`. If a change
+  doesn't fit an existing tool guide, create a `setup.md` section or a note
+  under the relevant `tools/` directory.
+- **Long-term goal — `setup.sh`:** a single script that installs the whole
+  environment (fzf, fd, yazi, all aliases/shortcuts, tmux config, nvim config,
+  etc.) and wires up the replicas on any machine. opencode helps build and
+  maintain it. Whenever a tool/alias is added, keep its replica + `setup.md`
+  ready for `setup.sh` to use.
+
 
 ## Web Search/Scraping Tools Policy (Exa + Firecrawl)
 
@@ -21,11 +58,10 @@ This repository tracks my journey to become a **Forward Deployed Engineer (FDE) 
 
 ## Current Topic
 
-**Phase 1.2 — Linux & Shell: Process management** (sub-topic of first checkbox)
-- Status: **in progress**
-- Notes created: `ownership-permissions.md`, `user-groups-permissions.md`, `find/find-exec.md`
-- Waiting on: `process-management/process-management.md` (commands: `ps`, `killall`, `top`, `bg`, `jobs`, `fg`, `kill`, `shutdown`)
-- Next after this: `filesystem-navigation.md`, then grep/sed/awk for log parsing
+**Phase 1.1 — Git: GitHub Workflow** (first unchecked topic in the sequence)
+- Status: **notes ready, not yet studied** (`github-workflow.md` created)
+- Full Phase 1 remaining: Git (`github-workflow.md`, `submodules-worktrees.md`), Databases (`sql-mastery.md`, `indexes.md`, `transactions-isolation.md`, `locks-deadlocks.md`, `redis.md`, `data-modeling.md`, `postgresql-internals.md`), Docker (`images-containers-dockerfile.md`, `docker-compose.md`, `volumes-networking.md`, `debugging-containers.md`, `image-optimization-security.md`), API Design (`api-design/*`), Testing (`tools/testing/*`)
+- Practice for every topic lives in `learning-process/practice-guide.md` (cross-linked to LEARNING_PATH.md)
 
 ---
 
@@ -56,6 +92,7 @@ When I ask "what should I study today?", "what is next?", "what's next?", "what 
   - **What** to study (specific topic and sub-topics)
   - **Where** to create the notes file (exact directory path)
   - **Sources** from the resources listed in the learning path
+  - **Practice** — the matching hands-on drills for that same topic from `learning-process/practice-guide.md` (cross-link map + section), so I get both the theory AND the playground/lab/online course for it in one answer.
 - Factor in the parallel tracks (DSA problems 3–4/week, Japanese study daily).
 
 ### 4. Marking Topics as Done
