@@ -18,6 +18,58 @@
 
 ---
 
+## GitHub Flow vs. Git Flow
+
+Two common branch models. Pick one per repo and standardize.
+
+### GitHub Flow (default for most modern repos)
+
+- `main` is **always deployable**.
+- Everything else lives on short-lived feature branches.
+- Loop: branch → commit → PR → review → squash-merge → deploy.
+
+```
+main (always green) ── merge ── merge ── merge
+                      ▲        ▲        ▲
+feature/a  ───────────┘        │        │
+feature/b  ────────────────────┘        │
+feature/c  ─────────────────────────────┘
+```
+
+- Best for: continuous deployment, SaaS, small–medium teams.
+- Why it wins: no long-lived branches, `main` never diverges, PRs are the single review gate.
+
+### Git Flow (release-driven, legacy but still common)
+
+- `main` = production releases **only** (every commit tagged with a version).
+- `develop` = integration branch where features accumulate.
+- `feature/*` branches off `develop` → merge back into `develop`.
+- `release/*` branches off `develop` for stabilization → merge into `main` + back to `develop`.
+- `hotfix/*` branches off `main` → merge into `main` + `develop`.
+
+```
+main     ──●──────────────────────● (v1.0) ────────● (v1.0.1)
+           \                    /                  /
+develop  ────●──●──●──●────────●──●────────────●───
+              \  \     \      /
+feature/*      ●   ●     ●    ●
+```
+
+- Best for: versioned releases (libraries, installed software), scheduled releases, strict change-control environments.
+- Downsides: ceremony, `develop` and `main` can diverge, merge commits everywhere, harder to CD.
+
+### Which to use
+
+| | GitHub Flow | Git Flow |
+|---|---|---|
+| `main` meaning | deployable at all times | release-only |
+| Branch lifetime | days | weeks (`develop` + `release`) |
+| Merge model | squash, linear | merge commits, preserved topology |
+| Releases | deploy on merge | tagged release branches |
+| When | most projects, CD | versioned releases, compliance |
+
+---
+
 ## Pull Requests
 
 ### Anatomy of a good PR
@@ -34,8 +86,19 @@
 
 ### PR lifecycle
 ```
-open → draft (WIP) → ready for review → requested changes → approved → merge
+open (draft) → mark ready → requested review → approved / changes requested → merge / close
 ```
+
+### Draft PRs
+- **Draft** = "not ready yet" — no review is requested, cannot be merged.
+- Use it for work-in-progress, testing CI on your branch, or sharing early design.
+- Convert to **ready for review** (`gh pr ready 123`) when done — only then is it mergeable.
+
+### Requesting & re-requesting review
+- **Request review** explicitly assigns reviewers; without an explicit request, "require approvals" can't be satisfied.
+- Pushing new commits **dismisses stale approvals** (if the rule is on) and moves the PR back to needing review.
+- After addressing feedback, **re-request review** (`gh pr edit 123 --add-reviewer`) instead of hoping the reviewer notices.
+- PR states are the source of truth: `OPEN`, `DRAFT`, `APPROVED`, `CHANGES_REQUESTED`, `MERGED`, `CLOSED` (`gh pr view 123`).
 
 ### Reviewing (the reviewer's job)
 - Review the *diff intent*, not just the code — "why does this exist?"
@@ -94,6 +157,19 @@ Branch protection rules (repo Settings → Branches) enforce quality gates on ke
 | **Code owners review** | Files owned by specific teams need their review |
 | **Include administrators** | Even admins must follow the rules |
 
+### CODEOWNERS — automatic review assignment by path
+- A `.github/CODEOWNERS` file assigns code owners to paths; anyone opening a PR that touches those paths **automatically gets the owner team requested for review**.
+- Syntax (paths follow `.gitignore` matching):
+  ```gitignore
+  *                      @org/core-platform
+  apps/api/**            @org/backend-eng
+  apps/web/**            @org/frontend-eng
+  *.md                   @docs-owners
+  /infra/terraform/**    @platform-eng
+  ```
+- Combine with the **"Require review from code owners"** branch rule: changes to an owned path can't merge without that owner's approval.
+- Unmatched paths fall through to the previous matching rule (or the repo default if none match).
+
 ---
 
 ## Merge Strategies
@@ -146,6 +222,18 @@ jobs:
 - **Matrix builds:** test multiple OS/node versions.
 - **Caching:** cache `node_modules`/`~/.npm` etc. to speed up runs.
 - **Path filters:** run job only when relevant files change (`paths:`).
+- **Reusable workflows:** `uses: owner/repo/.github/workflows/build.yml@main` to share a pipeline across many repos instead of copy-pasting.
+- **Workflow triggers:** `pull_request`, `push`, `workflow_dispatch` (manual), `schedule` (cron), `merge_group` (merge queue).
+
+### Protecting deployments (Environments)
+- **Environments** (Settings → Environments) gate *deployments*, not just merges.
+- Rule examples: `production` requires an approving review + a wait timer, and only deploys from `main`; `staging` is automatic.
+- Deployment jobs reference the environment via `environment: production` and read its secrets — production secrets are never available to PR jobs.
+
+### Action security hygiene
+- **Pin actions to a full commit SHA** (not `@main`) for supply-chain safety; update deliberately.
+- Give each job the **least-privilege `permissions:`** block instead of the repo-wide default.
+- Never log secrets; pass `${{ secrets.X }}` only via `env`/`with` and mask anything sensitive.
 
 ---
 
@@ -153,8 +241,13 @@ jobs:
 
 ```bash
 gh pr create --title "..." --body "..."         # create PR from current branch
+gh pr create --draft                            # create as draft
+gh pr ready 123                                 # mark draft → ready for review
 gh pr checkout 123                              # checkout PR #123 locally
 gh pr review 123 --approve                      # approve
+gh pr review 123 --request-changes --body "..." # request changes
+gh pr view 123                                  # state, reviewers, checks
+gh pr edit 123 --add-reviewer @org/backend-eng  # (re-)request review
 gh pr diff 123                                  # view diff
 gh pr status                                    # your open PRs
 gh repo fork <owner/repo>                       # fork + clone
@@ -169,4 +262,5 @@ gh run watch                                    # watch a run live
 - Fork = your remote copy; branch = your local copy in the same repo.
 - PR merges should require: CI green + ≥1 approval + branch up to date.
 - Squash-and-merge keeps `main` linear and reviewable.
+- CODEOWNERS auto-requests review by path; pair it with branch protection.
 - `gh` CLI makes PR creation/review scriptable from the terminal.
